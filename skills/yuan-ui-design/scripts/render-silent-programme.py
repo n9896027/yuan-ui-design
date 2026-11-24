@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import hashlib
+import math
 import re
 from pathlib import Path
 
@@ -166,8 +167,8 @@ def main():
     timeline_data = json.loads(args.timeline.read_text()) if args.timeline else default_timeline
     scene_ids = [scene.get('id') for scene in timeline_data.get('scenes', [])]
     valid_ids = ['cover'] + ids
-    if set(scene_ids) != set(valid_ids) or len(scene_ids) != len(valid_ids) or any(not isinstance(scene.get('duration'), (int, float)) or scene['duration'] <= 0 for scene in timeline_data.get('scenes', [])):
-        raise SystemExit('timeline.json must contain cover and each unique film.id once, with a positive duration')
+    if set(scene_ids) != set(valid_ids) or len(scene_ids) != len(valid_ids) or any(not isinstance(scene.get('duration'), (int, float)) or not math.isfinite(scene['duration']) or scene['duration'] < 1 / 24 for scene in timeline_data.get('scenes', [])):
+        raise SystemExit('timeline.json must contain cover and each unique film.id once, with a finite duration of at least one frame (1/24 second)')
     (out/'programme.html').write_text(programme_html(data,source_dir,rows)); (out/'social-cover.html').write_text(social_html(data,source_dir,rows));
     for index, film in enumerate(data['films']): (out/f"social-{film['id']}.html").write_text(social_html(data,source_dir,rows,index))
     pptx(data,source_dir,rows,out/'programme.pptx')
@@ -181,23 +182,33 @@ def main():
         subprocess.run([node,str(SCRIPT_DIR/'capture-silent-programme.mjs'),str(out)],check=True)
         scenes = [out/f"{name}.png" for name in manifest['social_pages']]
         durations = [scene['duration'] for scene in timeline_data['scenes']]
+        frames_per_second = 24
+        frame_counts = [round(value * frames_per_second) for value in durations]
         video_command = [ffmpeg, '-y']
-        for item, duration in zip(scenes, durations):
-            video_command.extend(['-loop', '1', '-t', str(duration), '-i', str(item)])
-        video_command.extend(['-filter_complex', f'concat=n={len(scenes)}:v=1:a=0,format=yuv420p', '-r', '24', str(out / 'social.mp4')])
+        filters = []
+        streams = []
+        for index, (item, count) in enumerate(zip(scenes, frame_counts)):
+            video_command.extend(['-framerate', str(frames_per_second), '-loop', '1', '-i', str(item)])
+            filters.append(f'[{index}:v]trim=end_frame={count},setpts=PTS-STARTPTS[s{index}]')
+            streams.append(f'[s{index}]')
+        filters.append(''.join(streams) + f'concat=n={len(scenes)}:v=1:a=0,format=yuv420p')
+        video_command.extend(['-filter_complex', ';'.join(filters), '-r', str(frames_per_second),
+                              '-frames:v', str(sum(frame_counts)), str(out / 'social.mp4')])
         subprocess.run(video_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.run([ffmpeg,'-y','-i',str(out/'social.mp4'),'-vf','fps=8,scale=600:-1:flags=lanczos',str(out/'social.gif')],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         manifest['hashes'] = {item.name: hashlib.sha256(item.read_bytes()).hexdigest() for item in scenes + [out/'social.mp4', out/'social.gif']}
         checkpoints = {}
-        elapsed = 0
-        for scene, duration in zip(timeline_data['scenes'], durations):
-            checkpoints[f"{scene['id']}_start"] = elapsed
-            checkpoints[f"{scene['id']}_end"] = max(elapsed, elapsed + duration - min(.1, duration / 10))
-            elapsed += duration
+        elapsed_frames = 0
+        for scene, count in zip(timeline_data['scenes'], frame_counts):
+            checkpoints[f"{scene['id']}_start"] = elapsed_frames / frames_per_second
+            checkpoints[f"{scene['id']}_end"] = (elapsed_frames + count - 1) / frames_per_second
+            elapsed_frames += count
+        manifest['video_frames'] = elapsed_frames
+        manifest['frames_per_second'] = frames_per_second
         manifest['timeline_frame_hashes'] = {}
         for label, second in checkpoints.items():
             frame = out/f'.{label}.jpg'
-            subprocess.run([ffmpeg,'-y','-ss',str(second),'-i',str(out/'social.mp4'),'-frames:v','1',str(frame)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+            subprocess.run([ffmpeg,'-y','-ss', f'{math.floor(second * 1000000) / 1000000:.6f}','-i',str(out/'social.mp4'),'-frames:v','1',str(frame)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
             manifest['timeline_frame_hashes'][label] = hashlib.sha256(frame.read_bytes()).hexdigest(); frame.unlink()
         (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     print(f'Rendered {out}')

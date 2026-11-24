@@ -2,6 +2,8 @@
 """Check the released programme's editable slides, source data and rendered assets."""
 from hashlib import sha256
 import json
+import shutil
+import subprocess
 from pathlib import Path
 from xml.etree import ElementTree
 from zipfile import ZipFile
@@ -40,6 +42,16 @@ def check():
             raise ValueError(f"Rendered asset differs from manifest: {name}")
     if not (OUT / "programme.pdf").read_bytes().startswith(b"%PDF-"):
         raise ValueError("Missing programme PDF")
+    if shutil.which("ffprobe"):
+        timeline = json.loads((OUT / "timeline.json").read_text())
+        expected_frames = sum(round(scene["duration"] * 24) for scene in timeline["scenes"])
+        raw = subprocess.check_output([
+            "ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+            "stream=nb_frames,r_frame_rate", "-of", "json", str(OUT / "social.mp4"),
+        ])
+        stream = json.loads(raw)["streams"][0]
+        if int(stream["nb_frames"]) != expected_frames or stream["r_frame_rate"] != "24/1":
+            raise ValueError("Video frame count or rate differs from the editable timeline")
     print(f"PASS editable slides and showtimes for {len(slots)} films; {len(expected)} rendered assets match")
 
 

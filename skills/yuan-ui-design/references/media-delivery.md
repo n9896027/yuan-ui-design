@@ -16,7 +16,7 @@ python3 /path/to/skills/yuan-ui-design/scripts/render-silent-programme.py \
 - `programme.pdf`：由同一 HTML 的 headless Chromium 打印结果；
 - `social-cover.png` 与 `social-{film-id}.png`：可在 HTML 中编辑文字后重新导出的封面和三个场次竖版画面；
 - `social.mp4`、`social.gif`：封面、三部片场次各停留三秒的四场景时间轴；它们不含影片片段；
-- `timeline.json`：包含场景 ID、顺序与时长；可编辑后通过 `--timeline /path/to/timeline.json` 复用；
+- `timeline.json`：包含场景 ID、顺序与时长；可编辑后通过 `--timeline /path/to/timeline.json` 复用。每段按 24 fps 取整至帧，清单记录实际总帧数；
 - `manifest.json`：源 JSON、场次时间、每张图的作者/署名/许可/来源页及导出画面/时间轴采样哈希，供快速复核。
 
 运行依赖：Python 3、`python-pptx`、Playwright、FFmpeg。运行脚本的项目须可由 Node 解析 `playwright`（可设置 `NODE_PATH=/path/to/node_modules`）；Playwright 浏览器路径可按其惯例安装，或以 `PLAYWRIGHT_EXECUTABLE_PATH` 显式传入。没有网络下载、webfont 或在线图片。Playwright 浏览器在 `try/finally` 中关闭。

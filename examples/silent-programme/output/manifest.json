@@ -50,17 +50,19 @@
     "social-garden.png": "7455fdacf052bc698609ddfce5d68eb2120c44eeea04fcd077856cdb92c486c9",
     "social-moon.png": "d08e5956d8c6e48f1ca0426622aba332fd84c56ed57d78a3632619cb6e11cb5f",
     "social-train.png": "50e42e2d9d51ec26b8b581071d352bcc55cc8382fe21a77b4cf949d938ce4931",
-    "social.mp4": "d90be1e1e8e6de3fe3079aa0b8292d363a2752c0abee042924eee75b13d96734",
-    "social.gif": "9d1b0b8268c9a1c194375835bad1889b41e54c030da5ac169a3101dd8a30cfe2"
+    "social.mp4": "adef12273545032568140e000f437832a072e26fe73bd8738eaf1dbc29671631",
+    "social.gif": "2a6335ac60b0dcaf3c23cb619fa14e084bbbf1653a6c1e27c5eba03d2d609533"
   },
+  "video_frames": 288,
+  "frames_per_second": 24,
   "timeline_frame_hashes": {
     "cover_start": "bc734d1ae8b746aafec19b7be92a4f16b552f771703343f140702fc94d4bb1c7",
-    "cover_end": "9c6cdb69c0f23bcf20db4a083ec11cd65db7d7ad756130d3db341ab8e4371f94",
+    "cover_end": "2f4f99436143eb30661438137d8a1560c02b458117e6008162740c768079ada1",
     "garden_start": "5fc83698739070f12e05c2e89d20c3c6b07e9dcfcf3ead4f60c3ef2ec75a1162",
     "garden_end": "60b4b01565937bfbe62b50e900dc47cf0e99068e2b8dbe982a0f7ad94d152488",
-    "moon_start": "5f3973ba28581907009a076d0ecb84a9a88e9f457574453c1a8e1da9b03112d6",
+    "moon_start": "96e21c84473f381bec03a906856836011345cc9e9d0ed6e73841b8e484ce59b5",
     "moon_end": "e921e969d5611d74fcd5eac237d718df7e5da8efd51e29f16e8534ae82e282c3",
-    "train_start": "a2b442d029919af0ecdecb4222bad317402c5547138f6fe1cad37fc17d514b85",
+    "train_start": "f0749b7a36f8cca6385d5e443a0f83fb7f28763a9780b0d12c010e04df74dd4e",
     "train_end": "2b32179ae0d28dcf141930c973bc54bb8f695af0cf772f26b5f8e287676935a5"
   }
 }
