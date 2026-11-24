@@ -26,9 +26,10 @@ jobs:
       - name: Test image imports and source records
         run: |
           python3 -m venv "$RUNNER_TEMP/yuan-image-checks"
-          "$RUNNER_TEMP/yuan-image-checks/bin/pip" install "Pillow>=11.3,<14"
+          "$RUNNER_TEMP/yuan-image-checks/bin/pip" install "Pillow>=11.3,<14" "python-pptx==1.0.2"
           "$RUNNER_TEMP/yuan-image-checks/bin/python" -B skills/yuan-ui-design/scripts/test_image_provenance.py
           "$RUNNER_TEMP/yuan-image-checks/bin/python" -B skills/yuan-ui-design/scripts/test_unslop_review.py
+          "$RUNNER_TEMP/yuan-image-checks/bin/python" -B examples/silent-programme/test_render_composition.py
       - name: Install browser for interaction checks
         run: |
           npm ci --ignore-scripts --no-audit --no-fund
@@ -39,6 +40,8 @@ jobs:
         run: npm run test:photo
       - name: Verify editable slides and rendered programme assets
         run: python3 examples/silent-programme/check.py
+      - name: Check protected picture regions across three layouts
+        run: npm run test:programme-composition
       - name: Verify mini-program content and storage contract
         run: |
           python3 examples/silent-programme/wechat/scripts/sync_programme.py --check

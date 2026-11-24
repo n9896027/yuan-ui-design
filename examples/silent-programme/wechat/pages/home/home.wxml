@@ -6,7 +6,7 @@
   <view wx:if="{{status}}">{{status}}</view>
   <view class="rule"></view>
   <view wx:for="{{films}}" wx:key="id" class="film" data-id="{{item.id}}" bindtap="openFilm" aria-label="查看{{item.title}}详情">
-    <image class="still" src="/{{item.image}}" mode="aspectFill" aria-label="{{item.alt}}"/>
+    <image class="still" src="/{{item.image}}" mode="{{item.delivery.mobile.mode}}" aria-label="{{item.alt}}"/>
     <view class="film-copy"><view class="time">{{item.time}} — {{item.end}}</view><view class="film-title">{{item.title}} <text class="star" wx:if="{{item.favorite}}">已收藏</text></view><view class="original">{{item.original}} · {{item.year}}</view><view class="caption">{{item.caption}}</view></view>
   </view>
 </view>

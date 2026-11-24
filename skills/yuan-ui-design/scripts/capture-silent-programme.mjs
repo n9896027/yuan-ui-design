@@ -5,7 +5,10 @@ import path from 'node:path';
 const out = path.resolve(process.argv[2]);
 const require = createRequire(pathToFileURL(path.join(process.cwd(), 'package.json')));
 const { chromium } = require('playwright');
-const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } : {}) });
+const launchOptions = { headless: true };
+if (process.env.PLAYWRIGHT_EXECUTABLE_PATH) launchOptions.executablePath = process.env.PLAYWRIGHT_EXECUTABLE_PATH;
+else if (process.env.PLAYWRIGHT_CHROMIUM_CHANNEL) launchOptions.channel = process.env.PLAYWRIGHT_CHROMIUM_CHANNEL;
+const browser = await chromium.launch(launchOptions);
 try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1 });
   await page.goto(pathToFileURL(path.join(out, 'programme.html')).href, { waitUntil: 'load' });

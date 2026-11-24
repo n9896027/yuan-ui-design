@@ -34,6 +34,9 @@ def check():
     for film in data["films"]:
         if any(film[key] not in html for key in ("title", "time", "end", "alt")):
             raise ValueError(f"Programme page is stale: {film['id']}")
+        asset = next(item for item in manifest["assets"] if item["film"] == film["id"])
+        if asset.get("composition") != film.get("composition"):
+            raise ValueError(f"Composition contract drifted: {film['id']}")
     expected = {"social-cover.png", "social.mp4", "social.gif"}
     expected.update("social-" + film["id"] + ".png" for film in data["films"])
     for name in expected:

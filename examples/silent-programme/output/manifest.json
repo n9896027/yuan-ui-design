@@ -23,19 +23,49 @@
       "film": "garden",
       "attribution": "作者：Louis Lumière；图片署名：Museum of Modern Art:  online database:  entry  304460 (Archived version)；许可：Public domain",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AL%27ArroseurArros%C3%A9.jpg",
-      "sha256": "25f8df7adf06e3d835b0bae098ce0c61a2b3801f322e7f2e9d698693a3608185"
+      "sha256": "25f8df7adf06e3d835b0bae098ce0c61a2b3801f322e7f2e9d698693a3608185",
+      "composition": {
+        "fit": "contain",
+        "protectedRegion": {
+          "x": 0.05,
+          "y": 0.08,
+          "width": 0.9,
+          "height": 0.84
+        },
+        "intent": "保留园丁、男孩与水管的相对位置，关系本身是笑话。"
+      }
     },
     {
       "film": "moon",
       "attribution": "作者：Georges Méliès；图片署名：Roger-Viollet；许可：Public domain",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ALe_Voyage_dans_la_lune.jpg",
-      "sha256": "a8f932b1197c45aa9ce7f76b2dc7f0b9361e44394068bba91253bb178ecc9e10"
+      "sha256": "a8f932b1197c45aa9ce7f76b2dc7f0b9361e44394068bba91253bb178ecc9e10",
+      "composition": {
+        "fit": "contain",
+        "protectedRegion": {
+          "x": 0.03,
+          "y": 0.03,
+          "width": 0.94,
+          "height": 0.94
+        },
+        "intent": "保持原始近方形画幅；月面与飞行器必须同时完整可见。"
+      }
     },
     {
       "film": "train",
       "attribution": "作者：Edwin Stanton Porter；图片署名：The Kobal Collection；许可：Public domain",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AGreat_train_robbery_still.jpg",
-      "sha256": "51ef6430cd94e6f4c4c88ebb3559e41d6d1bb5ac05a660bec00e13ebfd6a1895"
+      "sha256": "51ef6430cd94e6f4c4c88ebb3559e41d6d1bb5ac05a660bec00e13ebfd6a1895",
+      "composition": {
+        "fit": "contain",
+        "protectedRegion": {
+          "x": 0.04,
+          "y": 0.04,
+          "width": 0.92,
+          "height": 0.92
+        },
+        "intent": "保留人物、宽檐帽、前伸手臂与原始取景，不能截断主体。"
+      }
     }
   ],
   "social_pages": [
@@ -46,23 +76,23 @@
   ],
   "timeline": "timeline.json",
   "hashes": {
-    "social-cover.png": "bbdd000b836269067fed35b621df8d0d860e337ddbfc5fc23914adaff62df9a1",
-    "social-garden.png": "7455fdacf052bc698609ddfce5d68eb2120c44eeea04fcd077856cdb92c486c9",
-    "social-moon.png": "d08e5956d8c6e48f1ca0426622aba332fd84c56ed57d78a3632619cb6e11cb5f",
-    "social-train.png": "50e42e2d9d51ec26b8b581071d352bcc55cc8382fe21a77b4cf949d938ce4931",
-    "social.mp4": "adef12273545032568140e000f437832a072e26fe73bd8738eaf1dbc29671631",
-    "social.gif": "2a6335ac60b0dcaf3c23cb619fa14e084bbbf1653a6c1e27c5eba03d2d609533"
+    "social-cover.png": "0d2a4ab3149da29ad20c034bbc112eeaae3b6a9105152381b4de932014831ac6",
+    "social-garden.png": "f13d0a6f52ef6b02e1391cf54d82a02df441adb9e1f56b2c096965943b0bd58f",
+    "social-moon.png": "8cd29645a6062d59794c00c5ae773a8607c1093df856c8fc088a5f66ea69ae87",
+    "social-train.png": "a9f2c6a98928ede27362de1558ff09479c79fec709d1ee73fe386a0b69c32b97",
+    "social.mp4": "c61082cc64ba07b64b152756c2c553ba4674a92475b14812fb4569ea96ede304",
+    "social.gif": "eff59249da9dbdf664def05ff0eb772e697ddaac7a64ad8a1baa66408cb6150f"
   },
   "video_frames": 288,
   "frames_per_second": 24,
   "timeline_frame_hashes": {
-    "cover_start": "bc734d1ae8b746aafec19b7be92a4f16b552f771703343f140702fc94d4bb1c7",
-    "cover_end": "2f4f99436143eb30661438137d8a1560c02b458117e6008162740c768079ada1",
-    "garden_start": "5fc83698739070f12e05c2e89d20c3c6b07e9dcfcf3ead4f60c3ef2ec75a1162",
-    "garden_end": "60b4b01565937bfbe62b50e900dc47cf0e99068e2b8dbe982a0f7ad94d152488",
-    "moon_start": "96e21c84473f381bec03a906856836011345cc9e9d0ed6e73841b8e484ce59b5",
-    "moon_end": "e921e969d5611d74fcd5eac237d718df7e5da8efd51e29f16e8534ae82e282c3",
-    "train_start": "f0749b7a36f8cca6385d5e443a0f83fb7f28763a9780b0d12c010e04df74dd4e",
-    "train_end": "2b32179ae0d28dcf141930c973bc54bb8f695af0cf772f26b5f8e287676935a5"
+    "cover_start": "0c5e83586d446de238ef524df6b97c6f0fe9e11dfd193be549fc482ac4abec3d",
+    "cover_end": "8017ea7b5f2e6370c2e6a51eaed761de8b4d7c8f70ecb6a5f1c7aaf70a6c4407",
+    "garden_start": "b9f68af59601906c7ec9f70c247debafb9c9fbd9c824fc5a914cb9a30f543f14",
+    "garden_end": "c94805df899a6bb053d6a7d8b07b592f701be51b537618a31092d4d120c02a66",
+    "moon_start": "1c33ddeaaa53e9fd5d13e550bdc8e6ca73065e45588c1752bd94d88659ee374f",
+    "moon_end": "1bbda094fee35ada3c8133aa33c7f9bf388403319f487dedf8f33cd17a414242",
+    "train_start": "452b8593ccb0b46211153ac99ecc06cb732b53f0a63b0be06e7519a85ed70198",
+    "train_end": "53bd8d606470bb7dcf16d078bccc5c335508c5257946530e15d147de33986073"
   }
 }

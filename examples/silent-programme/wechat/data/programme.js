@@ -16,7 +16,25 @@ module.exports = {
       "image": "assets/garden.jpg",
       "alt": "园丁在画面左侧俯身拿着水管，男孩站在右侧。",
       "caption": "一根水管把两个人物连进同一个笑话。",
-      "credit": "Louis Lumière"
+      "credit": "Louis Lumière",
+      "composition": {
+        "fit": "contain",
+        "protectedRegion": {
+          "x": 0.05,
+          "y": 0.08,
+          "width": 0.9,
+          "height": 0.84
+        },
+        "intent": "保留园丁、男孩与水管的相对位置，关系本身是笑话。"
+      },
+      "delivery": {
+        "mobile": {
+          "mode": "aspectFit"
+        },
+        "detail": {
+          "mode": "aspectFit"
+        }
+      }
     },
     {
       "id": "moon",
@@ -28,7 +46,25 @@ module.exports = {
       "image": "assets/moon.jpg",
       "alt": "黑白月面长着人的五官，飞行器落在一只眼睛上。",
       "caption": "月亮在银幕上有了一张会做表情的脸。",
-      "credit": "Georges Méliès"
+      "credit": "Georges Méliès",
+      "composition": {
+        "fit": "contain",
+        "protectedRegion": {
+          "x": 0.03,
+          "y": 0.03,
+          "width": 0.94,
+          "height": 0.94
+        },
+        "intent": "保持原始近方形画幅；月面与飞行器必须同时完整可见。"
+      },
+      "delivery": {
+        "mobile": {
+          "mode": "aspectFit"
+        },
+        "detail": {
+          "mode": "aspectFit"
+        }
+      }
     },
     {
       "id": "train",
@@ -40,7 +76,25 @@ module.exports = {
       "image": "assets/train.jpg",
       "alt": "戴宽檐帽的演员正对镜头，手臂伸向前景。",
       "caption": "正面特写让镜头另一端的观众也进入了场景。",
-      "credit": "Edwin S. Porter"
+      "credit": "Edwin S. Porter",
+      "composition": {
+        "fit": "contain",
+        "protectedRegion": {
+          "x": 0.04,
+          "y": 0.04,
+          "width": 0.92,
+          "height": 0.92
+        },
+        "intent": "保留人物、宽檐帽、前伸手臂与原始取景，不能截断主体。"
+      },
+      "delivery": {
+        "mobile": {
+          "mode": "aspectFit"
+        },
+        "detail": {
+          "mode": "aspectFit"
+        }
+      }
     }
   ]
 };
