@@ -1,0 +1,13 @@
+{
+  "name": "yuan-ui-design-checks",
+  "private": true,
+  "scripts": {
+    "test:editor": "node skills/yuan-ui-design/evals/subtitle-persistence/check.cjs",
+    "test:photo": "node examples/device-inspection/check.cjs",
+    "test:transfer": "node benchmarks/exhibit-transfer/check.cjs",
+    "test:3d": "node examples/port-configurator/check.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

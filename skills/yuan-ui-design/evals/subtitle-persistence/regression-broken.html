@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>字幕回归反例</title>
+<button data-segment="a">A</button><button data-segment="b">B</button>
+<textarea id="copy" aria-label="字幕"></textarea><button id="save">保存</button><output id="notice"></output>
+<script>
+const seed = { a: '旧片段 A。', b: '旧片段 B。' };
+const key = 'yuan-ui-subtitle-broken';
+const drafts = { ...seed };
+const copy = document.querySelector('#copy');
+let selected = 'a';
+function show(id) {
+  // Deliberately wrong: on initial mount the empty control replaces the loaded A.
+  drafts[selected] = copy.value;
+  selected = id;
+  copy.value = drafts[id];
+}
+for (const button of document.querySelectorAll('[data-segment]')) {
+  button.onclick = () => show(button.dataset.segment);
+}
+document.querySelector('#save').onclick = () => {
+  const id = selected;
+  const text = copy.value;
+  document.querySelector('#notice').textContent = '正在保存';
+  // The check releases this response only after typing has continued.
+  window.finishBrokenSave = () => {
+    localStorage.setItem(key, JSON.stringify({ ...seed, [id]: text }));
+    copy.value = text;
+    document.querySelector('#notice').textContent = '已保存';
+  };
+};
+show('a');
+</script></html>

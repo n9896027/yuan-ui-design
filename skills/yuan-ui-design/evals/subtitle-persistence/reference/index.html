@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>字幕校对 · 旧值保护参考</title>
+<style>
+  body { max-width: 720px; margin: 0 auto; padding: 28px; color: #173a37; background: #f4f5ef; font: 17px/1.5 system-ui, sans-serif; }
+  nav { display: flex; gap: 8px; margin: 18px 0; } button, textarea { font: inherit; } button { padding: 8px 12px; } textarea { box-sizing: border-box; display:block; width:100%; min-height:8em; padding:10px; } output { display:block; min-height:1.5em; margin-top:12px; } [aria-current="true"] { font-weight: 750; outline: 2px solid #216c60; }
+</style>
+<main>
+  <h1>字幕校对</h1>
+  <p>参考实现：草稿按片段保留；只有已确认内容会在重载后恢复。</p>
+  <nav aria-label="选择字幕"><button type="button" data-segment="a">片段 A</button><button type="button" data-segment="b">片段 B</button><button type="button" data-segment="c">片段 C</button></nav>
+  <label for="copy">字幕文本</label><textarea id="copy" data-eval="copy"></textarea>
+  <button id="save" data-eval="save" type="button">保存这段</button>
+  <output id="notice" data-eval="status" role="status" aria-live="polite"></output>
+</main>
+<script src="editor.js"></script>

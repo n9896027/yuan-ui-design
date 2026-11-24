@@ -1,0 +1,8 @@
+node_modules/
+__pycache__/
+.playwright-cli/
+/.serena/
+/output/playwright/
+
+/examples/native-inspection/.build/
+**/xcuserdata/
