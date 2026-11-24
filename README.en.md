@@ -8,7 +8,7 @@ A Codex skill for designing and repairing product interfaces. Give it a product 
 
 ## Install in Codex
 
-Send this line to Codex to install the **2.4.0** skill from a fixed commit:
+The command below installs the public **2.4.0** snapshot. This development checkout contains **2.5.0-dev.1**.
 
 ```text
 Use $skill-installer to install https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -21,6 +21,12 @@ $yuan-ui-design Review our work-order editor on a phone. Make sure the full devi
 ```
 
 For a manual install, copy the `skills/yuan-ui-design` directory from the [2.4.0 snapshot](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1) into `${CODEX_HOME:-$HOME/.codex}/skills/`. Compare any existing local customizations before replacing them.
+
+## Try the 2.5 development examples
+
+Download the checkout and keep each HTML file with its assets. Locate three adjacent connectors in the [device photo](examples/device-inspection/index.html), then rotate the [3D schematic](examples/port-configurator/index.html), resolve a conflicting accessory choice, save and reopen. The [subtitle exercise](skills/yuan-ui-design/evals/subtitle-persistence/README.md) includes the original data loss and a working editor. One film programme supplies an [offline event page](examples/silent-programme/output/programme.html), an [editable PowerPoint deck](examples/silent-programme/output/programme.pptx) and a [WeChat mini-program project](examples/silent-programme/wechat/README.md).
+
+The [SwiftUI inspection app](examples/native-inspection/README.md) builds for the iOS Simulator SDK and stores photos and drafts locally. Camera capture and background recovery still need device testing. OpenClaw successfully discovered the skill metadata in an isolated offline workspace.
 
 ## Try the repair desk
 
@@ -54,6 +60,10 @@ From the repository root, run:
 node scripts/check-repository.mjs
 node skills/yuan-ui-design/scripts/validate-ui-evidence.mjs --self-test
 node skills/yuan-ui-design/scripts/ui-artifacts.mjs --self-test
+python3 examples/silent-programme/check.py
+npm ci
+npx --no-install playwright install chromium
+npm run test:editor && npm run test:transfer && npm run test:photo && npm run test:3d
 ```
 
-[Skill entry point](skills/yuan-ui-design/SKILL.md) · [Verification guide](skills/yuan-ui-design/references/verification.md) · [Sources](skills/yuan-ui-design/references/source-manifest.md) · [Huashu Design attribution and upstream license](skills/yuan-ui-design/references/huashu-adaptation.md)
+[First-pass and corrected exhibit editor](benchmarks/exhibit-transfer/README.md) · [Native inspection example and test scope](examples/native-inspection/README.md) · [Skill entry point](skills/yuan-ui-design/SKILL.md) · [Verification guide](skills/yuan-ui-design/references/verification.md) · [Sources](skills/yuan-ui-design/references/source-manifest.md) · [Huashu Design attribution and upstream license](skills/yuan-ui-design/references/huashu-adaptation.md)
