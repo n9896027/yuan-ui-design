@@ -8,7 +8,7 @@
 
 ## 安装到 Codex
 
-下面的安装链接固定到公开的 **2.4.0**。本开发分支的技能版本是 **2.5.0-dev.2**，可从当前检出目录安装。
+下面的安装链接固定到公开的 **2.4.0**。本开发分支的技能版本是 **2.5.0-dev.3**，可从当前检出目录安装。
 
 ```text
 请用 $skill-installer 安装 https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -23,7 +23,7 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 <details>
 <summary>手动安装或检查已安装版本</summary>
 
-下载含技能的分支或[固定版本](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1)，将其中的 `skills/yuan-ui-design` 文件夹复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。打开已安装目录里的 `SKILL.md`，固定版本的 `metadata.version` 为 `2.4.0`，本开发分支为 `2.5.0-dev.2`。已有定制版本时，先比较差异，再决定是否替换。
+下载含技能的分支或[固定版本](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1)，将其中的 `skills/yuan-ui-design` 文件夹复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。打开已安装目录里的 `SKILL.md`，固定版本的 `metadata.version` 为 `2.4.0`，本开发分支为 `2.5.0-dev.3`。已有定制版本时，先比较差异，再决定是否替换。
 
 </details>
 
@@ -39,8 +39,6 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 | 一个场次能否同步出不同格式 | 查看[节目页](examples/silent-programme/output/programme.html)、[可编辑演示稿](examples/silent-programme/output/programme.pptx)和[微信小程序工程](examples/silent-programme/wechat/README.md)。[整套成品与重建说明](examples/silent-programme/README.md)含三张真实剧照与宣传短片。 |
 | 原生 App 怎样保存巡检记录 | 打开 [SwiftUI 巡检工程](examples/native-inspection/README.md)。iOS SDK 已编译出 App 包，真机相机与后台恢复待验。 |
 
-可在维修台的「可复现状态」打开长设备名、保存中、失败留稿与保存后重开。同一个表单也用于键盘重试和重载检查。
-
 ## 配图构图实测
 
 [查看《月球旅行记》社交图的实际裁切变化](examples/silent-programme/moon-comparison.jpg)，或[并排查看与 Huashu 3.5.0 的陌生题首稿](benchmarks/portrait-composition/compare.html)。两位匿名代理都更喜欢 Huashu 对观察点的引导。逐点复核也发现了勋表标错位置和首屏活动信息不足。[简报、两份源稿与评审记录](benchmarks/portrait-composition/README.md)
@@ -51,11 +49,13 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 
 [看同一张工单在桌面、手机和保存失败时的前后对照](benchmarks/unslop-repair-desk/review.html)。
 
+只有网址时，也可以让 Yuan 保存原网页、生成可编辑副本并在离线浏览器里复核。先看字体、图片和动态画面是否保留下来，再做视觉修改。[网址改稿工具的用法](skills/yuan-ui-design/references/unslop.md) · [CERN 页面与离线回归记录](benchmarks/url-baseline/README.md)
+
 改编自 Damir Sokolovsky 的 Unslop，遵循 CC BY 4.0。[技能用法与署名](skills/yuan-ui-design/references/unslop.md) · [原项目](https://github.com/heydamir/unslop)
 
 ## 试用维修台
 
-[打开维修台演示文件](examples/repair-desk/index.html)。在 GitHub 文件页选择 **Download raw file**，用浏览器打开下载的 HTML。设备和工单为样例数据。
+[打开维修台演示文件](examples/repair-desk/index.html)。在 GitHub 文件页选择 **Download raw file**，用浏览器打开下载的 HTML。设备和工单为样例数据。页面底部的「可复现状态」可直接打开长设备名、保存中、失败留稿与保存后重开。
 
 1. 改写工单 W-02 的「检修备注」，勾选「模拟下一次保存失败」，点「保存更改」。
 2. 页面会提示保存失败。核对刚才输入的文字是否仍在编辑框。

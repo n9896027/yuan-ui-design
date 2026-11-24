@@ -8,7 +8,7 @@ A Codex skill for designing and repairing product interfaces. Give it a product 
 
 ## Install in Codex
 
-The command below installs the public **2.4.0** snapshot. This development checkout contains **2.5.0-dev.2**.
+The command below installs the public **2.4.0** snapshot. This development checkout contains **2.5.0-dev.3**.
 
 ```text
 Use $skill-installer to install https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -37,6 +37,8 @@ The [SwiftUI inspection app](examples/native-inspection/README.md) builds for th
 Ask Yuan to review a specific screen, for example “Unslop the work-order editor’s failed-save state on a phone. Keep the brand and verify retry and reload.” It can leave a working design in place, fix individual problems or revise the whole screen according to the findings. This workflow adapts Damir Sokolovsky’s Unslop under CC BY 4.0. [Workflow and credit](skills/yuan-ui-design/references/unslop.md) · [Upstream project](https://github.com/heydamir/unslop)
 
 [Compare the original and polished work order at desktop and mobile sizes, including the failed-save state.](benchmarks/unslop-repair-desk/review.html)
+
+For a URL-only brief, capture the original viewport and compare it with an editable offline copy before reviewing design changes. The manifest records pixel differences and elements needing inspection. [URL capture workflow](skills/yuan-ui-design/references/unslop.md) · [CERN example and offline regression](benchmarks/url-baseline/README.md)
 
 ## Try the repair desk
 

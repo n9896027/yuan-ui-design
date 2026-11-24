@@ -18,6 +18,21 @@
 
 视觉润色默认沿用功能、数据、信息顺序和导航。用户已经授权实施时直接推进；用户指定先看方向时，交付审阅稿后再继续。仅修保存逻辑、键盘错误或数据丢失时走原有功能修复流程。
 
+## 只有网址时，先验证可编辑副本
+
+选定一个具体页面和首屏尺寸。想调整手机首屏时，直接取手机尺寸。需要对比两个断点时，为两个尺寸分别建目录。运行环境需要 Node.js、Playwright 及 Chromium，从已安装 Playwright 的项目目录执行下列命令。将技能目录换为当前安装路径。
+
+```sh
+node "${CODEX_HOME:-$HOME/.codex}/skills/yuan-ui-design/scripts/url-baseline.cjs" \
+  https://info.cern.ch/hypertext/WWW/TheProject.html --width 390 --height 844 --out baseline-mobile
+```
+
+工具只读打开页面，为原屏和回放使用相同的浏览器视口。它向下检查最多三个屏高以触发懒加载，再回到起始位置；更深的内容在清单中仍可能未取到。成功生成清单时退出码为 0，然后用 `status` 判断是否需要复核。
+
+打开 `before.png` 看实际页面，再对照同视口离线打开 `index.html` 得到的 `replay.png`。先读 `manifest.json`，识别字体替换、延迟出现的图片和动态图层。显示 `needs-review` 时，在原图标出受影响的内容：图片能否辨认、标题有没有换行、Canvas 里哪一层只有一帧或已经缺失。只在可复现的区域比较设计改动；交互、提交和实时渲染仍须回原宿主验证。
+
+保留这份原始基线，复制整个输出目录后再编辑副本里的 HTML 或静态素材。按原来的尺寸与滚动位置重拍改稿，用前后的截图进行离线审阅。像素一致说明在记录的环境中复现了该画面；设计是否改善，要回到具体的阅读或操作任务判断。
+
 ## 按问题分层修改
 
 大范围精修可依次检视 **间距、颜色、图标、文案、排印、布局、控件细节、配图、动效**。只处理诊断命中的层，必要时回看相邻层。比如改短标签后，在手机上重看按钮宽度和焦点；把状态底色收敛后，重看报错时文字和操作是否仍容易找到。
@@ -42,4 +57,4 @@ python3 scripts/unslop_review.py --title "工单保存失败" \
 
 ## 来源与改编
 
-Unslop 由 Damir Sokolovsky（@heydamir）创作，源自他的 Unslopping 系列。本页按 CC BY 4.0 改编了界面诊断、改动幅度和分层精修方法。Yuan 重写了中文说明，加入编辑器数据保护、多宿主验证及离线对照。对照工具为 Yuan 实现。上游另提供网页快照和改版过程视频工具，可按任务参考其用法。[作者](https://heydamir.design/unslop) · [固定版本](https://github.com/heydamir/unslop/blob/620163eedb3529d9cd23a3994ed8d287d06f760d/skills/unslop/SKILL.md) · [上游许可](https://github.com/heydamir/unslop/blob/620163eedb3529d9cd23a3994ed8d287d06f760d/LICENSE) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Unslop 由 Damir Sokolovsky（@heydamir）创作，源自他的 Unslopping 系列。本页按 CC BY 4.0 改编了界面诊断、改动幅度和分层精修方法。Yuan 重写了中文说明，加入编辑器数据保护、多宿主验证及离线对照。离线对照与网址基线工具为 Yuan 实现。网址流程借鉴了上游先保存原页面的做法。[作者](https://heydamir.design/unslop) · [固定版本](https://github.com/heydamir/unslop/blob/620163eedb3529d9cd23a3994ed8d287d06f760d/skills/unslop/SKILL.md) · [上游许可](https://github.com/heydamir/unslop/blob/620163eedb3529d9cd23a3994ed8d287d06f760d/LICENSE) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)

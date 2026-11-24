@@ -6,8 +6,9 @@
     "test:photo": "node examples/device-inspection/check.cjs",
     "test:transfer": "node benchmarks/exhibit-transfer/check.cjs",
     "test:3d": "node examples/port-configurator/check.cjs",
-    "test:programme-composition": "node examples/silent-programme/check-composition.cjs && env PYTHONDONTWRITEBYTECODE=1 python3 examples/silent-programme/test_render_composition.py",
-    "test:repair-states": "node examples/repair-desk/check-states.cjs"
+    "test:programme-composition": "node examples/silent-programme/check-composition.cjs",
+    "test:repair-states": "node examples/repair-desk/check-states.cjs",
+    "test:url-baseline": "node benchmarks/url-baseline/check.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

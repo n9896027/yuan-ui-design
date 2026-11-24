@@ -38,6 +38,8 @@ jobs:
         run: npm run test:editor
       - name: Exercise named repair states, retry and reload
         run: npm run test:repair-states
+      - name: Capture and verify an editable offline URL baseline
+        run: npm run test:url-baseline
       - name: Exercise photo inspection on desktop and mobile layouts
         run: npm run test:photo
       - name: Verify editable slides and rendered programme assets

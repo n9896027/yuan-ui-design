@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "url": "https://info.cern.ch/hypertext/WWW/TheProject.html",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "status": "match",
+  "files": {
+    "before": "before.png",
+    "static": "index.html",
+    "replay": "replay.png"
+  },
+  "diff": {
+    "changedPixelRatio": 0,
+    "meanChannelDelta": 0,
+    "algorithm": "Changed pixel when the mean absolute RGB channel difference exceeds 12 (0–255)",
+    "thresholds": {
+      "changedPixelRatio": 0.001,
+      "meanChannelDelta": 2,
+      "perPixelRgbDelta": 12
+    }
+  },
+  "assets": {
+    "captured": 0,
+    "missing": [],
+    "unresolved": []
+  },
+  "limitations": {
+    "fonts": [],
+    "canvasKinds": [],
+    "canvas": 0,
+    "webgl": false,
+    "lazyResources": 0,
+    "dynamic": false,
+    "removedNodes": [],
+    "offlineRequests": []
+  },
+  "capture": {
+    "httpStatus": 200,
+    "title": "The World Wide Web project",
+    "compatMode": "BackCompat",
+    "chromium": "158.0.8127.37",
+    "fonts": [],
+    "lazyImages": []
+  },
+  "replay": {
+    "fonts": []
+  }
+}
