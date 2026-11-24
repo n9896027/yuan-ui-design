@@ -1,5 +1,7 @@
 # Source Manifest and Maintenance
 
+v2.5.0-dev.2 核对于 2026-11-24。既有屏幕的分级诊断与分层精修改编自 Damir Sokolovsky 的 Unslop，固定提交 `620163eedb3529d9cd23a3994ed8d287d06f760d`。[改编范围、作者与 CC BY 4.0 许可](unslop.md#来源与改编)
+
 v2.4.0 平台与空间交互审阅（2026-11-24）。平台导航依据 [Android 导航原则](https://developer.android.com/guide/navigation/principles)，PWA 安装与启动依据 [MDN 安装指南](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable)。模型显示与加载参考 [model-viewer 实例](https://modelviewer.dev/examples/loading/)，头显输入与舒适度参考 [Apple visionOS 设计指南](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos)。具体能力按目标宿主和版本验证。
 
 v2.3.0 审阅：2026-11-24。WCAG/ARIA、Web Vitals、DTCG 与既有 AI 协议结论沿用同日 v2.1 核对，视觉方法来源保留 v2.2 的固定 Huashu 快照。此次增量来自已有 React 仓库的本地保存/恢复实施，并核对 React 官方 Effect 与状态更新说明，以及 PDF.js 已安装 6.2.108 类型与官方 API 的资源清理所有者；不扩展外部协议结论。检索日期不是规范或产品发布日期。

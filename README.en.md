@@ -8,7 +8,7 @@ A Codex skill for designing and repairing product interfaces. Give it a product 
 
 ## Install in Codex
 
-The command below installs the public **2.4.0** snapshot. This development checkout contains **2.5.0-dev.1**.
+The command below installs the public **2.4.0** snapshot. This development checkout contains **2.5.0-dev.2**.
 
 ```text
 Use $skill-installer to install https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -27,6 +27,12 @@ For a manual install, copy the `skills/yuan-ui-design` directory from the [2.4.0
 Download the checkout and keep each HTML file with its assets. Locate three adjacent connectors in the [device photo](examples/device-inspection/index.html), then rotate the [3D schematic](examples/port-configurator/index.html), resolve a conflicting accessory choice, save and reopen. The [subtitle exercise](skills/yuan-ui-design/evals/subtitle-persistence/README.md) includes the original data loss and a working editor. One film programme supplies an [offline event page](examples/silent-programme/output/programme.html), an [editable PowerPoint deck](examples/silent-programme/output/programme.pptx) and a [WeChat mini-program project](examples/silent-programme/wechat/README.md).
 
 The [SwiftUI inspection app](examples/native-inspection/README.md) builds for the iOS Simulator SDK and stores photos and drafts locally. Camera capture and background recovery still need device testing. OpenClaw successfully discovered the skill metadata in an isolated offline workspace.
+
+## Polish an existing screen with Unslop
+
+Ask Yuan to review a specific screen, for example “Unslop the work-order editor’s failed-save state on a phone. Keep the brand and verify retry and reload.” It can leave a working design in place, fix individual problems or revise the whole screen according to the findings. This workflow adapts Damir Sokolovsky’s Unslop under CC BY 4.0. [Workflow and credit](skills/yuan-ui-design/references/unslop.md) · [Upstream project](https://github.com/heydamir/unslop)
+
+[Compare the original and polished work order at desktop and mobile sizes, including the failed-save state.](benchmarks/unslop-repair-desk/review.html)
 
 ## Try the repair desk
 

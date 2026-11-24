@@ -28,6 +28,7 @@ jobs:
           python3 -m venv "$RUNNER_TEMP/yuan-image-checks"
           "$RUNNER_TEMP/yuan-image-checks/bin/pip" install "Pillow>=11.3,<14"
           "$RUNNER_TEMP/yuan-image-checks/bin/python" -B skills/yuan-ui-design/scripts/test_image_provenance.py
+          "$RUNNER_TEMP/yuan-image-checks/bin/python" -B skills/yuan-ui-design/scripts/test_unslop_review.py
       - name: Install browser for interaction checks
         run: |
           npm ci --ignore-scripts --no-audit --no-fund
