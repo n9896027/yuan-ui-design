@@ -1,0 +1,11 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "silent-programme",
+  "description": "从 programme.json 同步的电影节目单",
+  "setting": {
+    "es6": true,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "appid": "touristappid"
+}

@@ -1,0 +1,34 @@
+{
+  "asset": {
+    "bytes": 292615,
+    "dimensions": {
+      "height": 721,
+      "width": 960
+    },
+    "path": "garden.jpg",
+    "sha256": "25f8df7adf06e3d835b0bae098ce0c61a2b3801f322e7f2e9d698693a3608185"
+  },
+  "focal_or_crop_intent": "保留园丁、男孩和水管之间的位置关系",
+  "generation_method": "downloaded thumbnail from Wikimedia Commons (not AI-generated)",
+  "mode": "wikimedia_commons_download",
+  "recorded_at": "2026-11-24T07:59:25.087290+00:00",
+  "review_note": "Hash and metadata establish traceability, not ownership or suitability. Re-check the source page before publication.",
+  "schema_version": "1.0",
+  "source": {
+    "author": "Louis Lumière",
+    "credit": "Museum of Modern Art:  online database:  entry  304460 (Archived version)",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/L%27ArroseurArros%C3%A9.jpg/960px-L%27ArroseurArros%C3%A9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "file_page": "https://commons.wikimedia.org/wiki/File%3AL%27ArroseurArros%C3%A9.jpg",
+    "height": 2661,
+    "kind": "wikimedia_commons",
+    "license": "Public domain",
+    "license_url": null,
+    "mime": "image/jpeg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/L%27ArroseurArros%C3%A9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "requested_width": 960,
+    "retrieval_kind": "thumbnail",
+    "title": "File:L'ArroseurArrosé.jpg",
+    "width": 3543
+  },
+  "subject": "《水浇园丁》剧照"
+}

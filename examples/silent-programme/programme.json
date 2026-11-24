@@ -1,0 +1,45 @@
+{
+  "title": "银幕之前",
+  "subtitle": "早期电影选映",
+  "date": "12 月 12 日",
+  "venue": "资料放映厅",
+  "note": "排片为策展示例，时间含导赏与映后交流。",
+  "films": [
+    {
+      "id": "garden",
+      "title": "水浇园丁",
+      "original": "L’Arroseur arrosé",
+      "year": 1895,
+      "time": "14:00",
+      "end": "14:25",
+      "image": "assets/garden.jpg",
+      "alt": "园丁在画面左侧俯身拿着水管，男孩站在右侧。",
+      "caption": "一根水管把两个人物连进同一个笑话。",
+      "credit": "Louis Lumière"
+    },
+    {
+      "id": "moon",
+      "title": "月球旅行记",
+      "original": "Le Voyage dans la Lune",
+      "year": 1902,
+      "time": "14:30",
+      "end": "15:05",
+      "image": "assets/moon.jpg",
+      "alt": "黑白月面长着人的五官，飞行器落在一只眼睛上。",
+      "caption": "月亮在银幕上有了一张会做表情的脸。",
+      "credit": "Georges Méliès"
+    },
+    {
+      "id": "train",
+      "title": "火车大劫案",
+      "original": "The Great Train Robbery",
+      "year": 1903,
+      "time": "15:10",
+      "end": "15:40",
+      "image": "assets/train.jpg",
+      "alt": "戴宽檐帽的演员正对镜头，手臂伸向前景。",
+      "caption": "正面特写让镜头另一端的观众也进入了场景。",
+      "credit": "Edwin S. Porter"
+    }
+  ]
+}

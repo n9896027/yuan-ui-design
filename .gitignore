@@ -6,3 +6,4 @@ __pycache__/
 
 /examples/native-inspection/.build/
 **/xcuserdata/
+/examples/native-inspection/build/

@@ -1,0 +1,10 @@
+{
+  "pages": ["pages/home/home", "pages/film/film"],
+  "window": {
+    "navigationBarTitleText": "银幕之前",
+    "navigationBarBackgroundColor": "#f6f0e4",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f0e4"
+  },
+  "sitemapLocation": "sitemap.json"
+}

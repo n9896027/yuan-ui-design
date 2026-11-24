@@ -1,0 +1,28 @@
+// !$*UTF8*$!
+{
+ archiveVersion = 1;
+ classes = {};
+ objectVersion = 56;
+ objects = {
+  81582E307F5AE3698245CBDF /* project */ = {isa = PBXProject; attributes = { LastSwiftUpdateCheck = 1600; }; buildConfigurationList = 2F602BD38099F246B8198253 /* projConfigs */; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; knownRegions = (en, Base); mainGroup = C8076BC27C4DDA52EC414FE3 /* main */; productRefGroup = 1532AB649BAB073D0463EE7D /* products */; projectDirPath = ""; projectRoot = ""; targets = (EB5E81B9395321CC20346526 /* app */); };
+  C8076BC27C4DDA52EC414FE3 /* main */ = {isa = PBXGroup; children = (7AA8B048144BE0EFD4DBF1EC /* coreFile */,C2E6B8AD4F28FA47B58CA442 /* uiFile */,6349FFBA159C5701F1A3A058 /* plist */,1532AB649BAB073D0463EE7D /* products */); sourceTree = "<group>";};
+  1532AB649BAB073D0463EE7D /* products */ = {isa = PBXGroup; children = (A9793DE0A297C70D5A5248EE /* appFile */); name = Products; sourceTree = "<group>";};
+  7AA8B048144BE0EFD4DBF1EC /* coreFile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/InspectionCore/InspectionState.swift; sourceTree = "<group>";};
+  C2E6B8AD4F28FA47B58CA442 /* uiFile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/NativeInspection/NativeInspectionApp.swift; sourceTree = "<group>";};
+  6349FFBA159C5701F1A3A058 /* plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = iOS/Info.plist; sourceTree = "<group>";};
+  A9793DE0A297C70D5A5248EE /* appFile */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = NativeInspection.app; sourceTree = BUILT_PRODUCTS_DIR;};
+  00A902DFCC5B043977F584AF /* coreSrc */ = {isa = PBXBuildFile; fileRef = 7AA8B048144BE0EFD4DBF1EC /* coreFile */;};
+  5FCD4C1959877FDE0C17AF4F /* uiSrc */ = {isa = PBXBuildFile; fileRef = C2E6B8AD4F28FA47B58CA442 /* uiFile */;};
+  6A5792C7867AB1490018F5DD /* sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (00A902DFCC5B043977F584AF /* coreSrc */,5FCD4C1959877FDE0C17AF4F /* uiSrc */); runOnlyForDeploymentPostprocessing = 0;};
+  149E7CEADA15DC849855DC1C /* frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0;};
+  03A02F2645C03E02704353D4 /* resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0;};
+  EB5E81B9395321CC20346526 /* app */ = {isa = PBXNativeTarget; buildConfigurationList = 6CA182662A804E0662BC2134 /* appConfigs */; buildPhases = (6A5792C7867AB1490018F5DD /* sources */,149E7CEADA15DC849855DC1C /* frameworks */,03A02F2645C03E02704353D4 /* resources */); buildRules = (); dependencies = (); name = NativeInspection; productName = NativeInspection; productReference = A9793DE0A297C70D5A5248EE /* appFile */; productType = "com.apple.product-type.application";};
+  2F602BD38099F246B8198253 /* projConfigs */ = {isa = XCConfigurationList; buildConfigurations = (6BBEBFD7388ADF2F61A4F530 /* projectDebug */,7DE40936968F1C55CABCD3AC /* projectRelease */); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+  6CA182662A804E0662BC2134 /* appConfigs */ = {isa = XCConfigurationList; buildConfigurations = (642F016CA8B495B0D2177D81 /* appDebug */,C308640535C6DABBAB8AD166 /* appRelease */); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+  6BBEBFD7388ADF2F61A4F530 /* projectDebug */ = {isa = XCBuildConfiguration; buildSettings = { SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SWIFT_VERSION = 5.0; CLANG_ENABLE_MODULES = YES; }; name = Debug;};
+  642F016CA8B495B0D2177D81 /* appDebug */ = {isa = XCBuildConfiguration; buildSettings = { PRODUCT_BUNDLE_IDENTIFIER = org.example.nativeinspection; PRODUCT_NAME = "$(TARGET_NAME)"; TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; INFOPLIST_FILE = iOS/Info.plist; GENERATE_INFOPLIST_FILE = NO; }; name = Debug; };
+  7DE40936968F1C55CABCD3AC /* projectRelease */ = {isa = XCBuildConfiguration; buildSettings = { SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SWIFT_VERSION = 5.0; CLANG_ENABLE_MODULES = YES; }; name = Release;};
+  C308640535C6DABBAB8AD166 /* appRelease */ = {isa = XCBuildConfiguration; buildSettings = { PRODUCT_BUNDLE_IDENTIFIER = org.example.nativeinspection; PRODUCT_NAME = "$(TARGET_NAME)"; TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; INFOPLIST_FILE = iOS/Info.plist; GENERATE_INFOPLIST_FILE = NO; }; name = Release; };
+ };
+ rootObject = 81582E307F5AE3698245CBDF /* project */;
+}
