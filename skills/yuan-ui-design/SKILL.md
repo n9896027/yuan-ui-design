@@ -2,12 +2,12 @@
 name: yuan-ui-design
 description: 设计、实现或审计产品 UI，可按 Unslop 方法为已有界面去除模板感、精修视觉。适用于网站与 Web App、原生移动及桌面 App、后台与编辑器、AI/agent 界面、设计系统、互动教学及产品 3D，也支持基于同一份内容交付网页、演示稿与社交图文。根据使用场景设计视觉与操作，在目标宿主验证。纯图片或模型资产制作、纯后端和商业品牌复刻不在范围内。
 metadata:
-  version: "2.5.0-dev.3"
+  version: "2.5.0-dev.4"
   last-reviewed: "2026-11-24"
   short-description: Build distinct, truthful, accessible product UI
 ---
 
-# Yuan-UI-design v2.5.0-dev.3
+# Yuan-UI-design v2.5.0-dev.4
 
 Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自当前产品的任务、内容与设计系统。目标不是“做得像某个 AI 产品”，而是把真实产品任务变成有辨识度、可操作、可验证的界面。
 
@@ -31,7 +31,7 @@ Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自�
 - 改造已有仓库或连接现有组件、回调与状态：读 [references/repository-integration.md](references/repository-integration.md)；新原型与纯规格不加载。
 - 从截图或竞品提炼风格，或设计后台、落地页、编辑器的视觉系统时，读 [references/visual-quality.md](references/visual-quality.md)。
 - 用户要求 Unslop、去 AI 味或修整已有屏幕的模板感时，读 [Unslop 视觉精修](references/unslop.md)。若只给网址，先对照同尺寸原屏和离线副本，确认能复现后再改稿。
-- 用户需要凭图辨认实物、挑选照片，或为多张插画保持一致的美术方向时，读 [配图与选图](references/image-direction.md)。先用关键素材试做目标视口；核对型号、关键部位、来源以及裁切后还能完成的任务。
+- 用户需要凭图辨认实物、挑选照片，或为多张插画保持一致的美术方向时，读 [配图与选图](references/image-direction.md)。先明确读者要凭图找到、辨认或比较什么，在目标视口试做这个动作，再安排解释、揭晓或提交。
 - 同一份内容要出网页、PPTX、印刷 PDF、社交图或影像时，读 [跨媒介交付](references/media-delivery.md)。锁定内容来源，从改一次场次开始验证所有成品。
 - 有 AI 生成、工具执行、长任务、用户接管或中断恢复：读 [references/agentic-ui.md](references/agentic-ui.md)。普通页面不加载。
 - 运行时模型动态组合界面，或要选择 A2UI、AG-UI、MCP Apps 接入方案：再读 [references/generative-ui.md](references/generative-ui.md)。

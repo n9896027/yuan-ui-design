@@ -2,7 +2,7 @@
 
 同一份北岸图书馆活动简报要求读者观察霍珀肖像中的眼镜、帽徽和胸前勋表。两位相互隔离的制作代理使用相同的模型配置，各自只获配一种设计技能、一张照片和相同的工具许可。每方均可在提交前自行核看一次三个画框，交一份首稿。外部素材及新生成图像预算为零，未限制排版方案，未计量实际推理 token。题目与评审标准在制作前确定。此题检验既有素材的编排，生成插画质量需另题验证。
 
-[任务原文](brief.md) · [预先确定的评审规则](rubric.md) · [六张截图并排查看](compare.html)
+[任务原文](brief.md) · [预先确定的评审规则](rubric.md) · [A、B、C 九张截图并排查看](compare.html)
 
 ## 盲评结果
 
@@ -19,12 +19,28 @@ A 是 [Huashu Design 3.5.0 首稿](A/index.html)，B 是 [Yuan 首稿](B/index.h
 
 两份海报均为 800 × 1000。浏览器记录显示所有已呈现的图片加载成功，三个画框均无横向溢出，两份网页均可向下滚动。[原始浏览器记录](measurements.json) · [对照所用 Huashu 版本](https://github.com/alchaincyf/huashu-design/tree/59065698ad63f87ea1532c126c87f488d4f93fd6)
 
+## C 修订及「去 AI 味」专项
+
+[C · Yuan 2.5.0-dev.4](C/index.html) 在 B 的彩色肖像与姓名揭晓基础上，按首稿反馈做了第二轮设计。它直接使用同一张 512 × 600 原图中的眼镜、帽徽和勋表局部。手机将三个局部紧靠完整照片，姓名按钮在图外，海报直接列出中英文姓名和活动信息。[三版同屏，可点图放大](compare.html) · [本轮浏览器测量](measurements-abc.json)
+
+两位新评审在不知道制作者、版本和修订历史的情况下，按不同的匿名顺序检查三种画幅。这次问的是「哪个画面依赖这张具体照片、哪些表达移到别的项目也成立」。评审根据静态图给偏好，键盘与触屏由浏览器另验。C 已获得上一轮反馈，比较衡量的是这次修订的成品效果。
+
+| 匿名评审 | 较少模板感的顺序 | 画面依据 |
+| --- | --- | --- |
+| 一 | C、B、A | C 的局部切片能逐一对上原物；B 的姓名卡体现了阅读顺序。评审最喜欢 B 的海报构图，发现 A 的勋表标错了位置。 |
+| 二 | C、A、B | C 把三个观察词变成可以看的实物；A 标注醒目但勋表圈落到了领口。评审最喜欢 C 的海报，认为 B 对细节的引导较少。 |
+
+C 在这道修订题获得两票。只看原 A、B 的相对顺序，本次各得一票。上次首稿评审的题目及结果保留在上方。另用同一份待整修的社区点交页让两套技能各交一次首稿，直接比较对现成模板的去除效果。[点交页原稿、两份改稿及分歧](../return-desk-polish/README.md)
+
+实测 390 × 844 首屏可见日期、地点、整张肖像、三个局部和姓名按钮。Enter 与触屏点按均可揭晓姓名，再次操作会收起。初始网页的无障碍树也保留了揭晓顺序。海报单独在 800 × 1000 渲染。浏览器模拟触屏，未进行真人偏好测试。
+
 ## 复现
 
-在仓库根目录安装锁定的 Node 依赖与 Playwright Chromium，运行下列命令。脚本会在离线浏览器中按 1 倍像素比渲染两份首稿，并记录各自的可见文案、照片载入情况及页面宽度。系统字体和浏览器版本会影响重跑的画面。
+在仓库根目录安装锁定的 Node 依赖与 Playwright Chromium，运行下列命令。脚本会在离线浏览器中按 1 倍像素比渲染两份首稿和 C 修订，并记录各自的可见文案、照片载入情况及页面宽度。系统字体和浏览器版本会影响重跑的画面。
 
 ```sh
 node benchmarks/portrait-composition/capture.cjs output/playwright/portrait
+node benchmarks/portrait-composition/build-comparison.mjs output/playwright/portrait
 ```
 
 照片是 James S. Davis 为美国海军拍摄的格蕾丝·霍珀正式肖像，馆藏号 NH 96919-KN。本题使用 Matplotlib 随附的 512 × 600 版本。原始海军职务作品在美国为公有领域。两份输入逐字节相同。图书馆和活动为测试设定。[图像及权利说明](https://commons.wikimedia.org/wiki/File:Grace_Hopper.jpg) · [Matplotlib 图像文件](https://github.com/matplotlib/matplotlib/blob/v3.9.0/lib/matplotlib/mpl-data/sample_data/grace_hopper.jpg)

@@ -8,7 +8,7 @@ A Codex skill for designing and repairing product interfaces. Give it a product 
 
 ## Install in Codex
 
-The command below installs the public **2.4.0** snapshot. This development checkout contains **2.5.0-dev.3**.
+The command below installs the public **2.4.0** snapshot. This development checkout contains **2.5.0-dev.4**.
 
 ```text
 Use $skill-installer to install https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -30,7 +30,7 @@ The [SwiftUI inspection app](examples/native-inspection/README.md) builds for th
 
 ## Image composition in practice
 
-[Inspect the revised Moon still in the social export](examples/silent-programme/moon-comparison.jpg) and [compare two independent first drafts made from the same brief and photograph](benchmarks/portrait-composition/compare.html). Both blind agent reviewers preferred Huashu 3.5.0 on this task. A separate check found a misplaced annotation in that draft and missing first-screen event information in Yuan’s. [Brief, source files and evaluation](benchmarks/portrait-composition/README.md)
+[Inspect the revised Moon still](examples/silent-programme/moon-comparison.jpg) or [compare the Huashu first draft (A), the original Yuan draft (B) and the feedback-informed Yuan revision (C)](benchmarks/portrait-composition/compare.html). C pairs three details with the full photograph before revealing the sitter’s name. [Portrait evaluation](benchmarks/portrait-composition/README.md) · [Two independent redesigns of the same tool-return page](benchmarks/return-desk-polish/README.md)
 
 ## Polish an existing screen with Unslop
 

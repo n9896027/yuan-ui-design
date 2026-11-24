@@ -8,7 +8,7 @@
 
 ## 安装到 Codex
 
-下面的安装链接固定到公开的 **2.4.0**。本开发分支的技能版本是 **2.5.0-dev.3**，可从当前检出目录安装。
+下面的安装链接固定到公开的 **2.4.0**。本开发分支的技能版本是 **2.5.0-dev.4**，可从当前检出目录安装。
 
 ```text
 请用 $skill-installer 安装 https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -23,7 +23,7 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 <details>
 <summary>手动安装或检查已安装版本</summary>
 
-下载含技能的分支或[固定版本](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1)，将其中的 `skills/yuan-ui-design` 文件夹复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。打开已安装目录里的 `SKILL.md`，固定版本的 `metadata.version` 为 `2.4.0`，本开发分支为 `2.5.0-dev.3`。已有定制版本时，先比较差异，再决定是否替换。
+下载含技能的分支或[固定版本](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1)，将其中的 `skills/yuan-ui-design` 文件夹复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。打开已安装目录里的 `SKILL.md`，固定版本的 `metadata.version` 为 `2.4.0`，本开发分支为 `2.5.0-dev.4`。已有定制版本时，先比较差异，再决定是否替换。
 
 </details>
 
@@ -41,7 +41,7 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 
 ## 配图构图实测
 
-[查看《月球旅行记》社交图的实际裁切变化](examples/silent-programme/moon-comparison.jpg)，或[并排查看与 Huashu 3.5.0 的陌生题首稿](benchmarks/portrait-composition/compare.html)。两位匿名代理都更喜欢 Huashu 对观察点的引导。逐点复核也发现了勋表标错位置和首屏活动信息不足。[简报、两份源稿与评审记录](benchmarks/portrait-composition/README.md)
+[查看《月球旅行记》社交图的实际裁切变化](examples/silent-programme/moon-comparison.jpg)，或[并排查看 Huashu 首稿 A、Yuan 首稿 B 和 Yuan 修订 C](benchmarks/portrait-composition/compare.html)。C 在彩色肖像旁展示原图局部，手机首屏可直接揭晓姓名。[肖像比较与匿名评审](benchmarks/portrait-composition/README.md) · [同一张工具归还页的去 AI 味对照](benchmarks/return-desk-polish/README.md)
 
 ## 用 Unslop 精修已有界面
 

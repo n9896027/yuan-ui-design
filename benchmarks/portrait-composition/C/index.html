@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>读一张肖像｜北岸图书馆</title>
+  <style>
+    :root { --paper:#f3f0e7; --ink:#152a36; --rust:#923a26; --rule:#999e99; --muted:#4c595a; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 system-ui,sans-serif; }
+    h1,h2,h3,p,figure,dl,dd { margin:0; }
+    .serif,h1,h2,h3 { font-family:"Songti SC","STSong","Noto Serif CJK SC",serif; }
+    .mast { display:flex; justify-content:space-between; align-items:center; gap:1em; min-height:58px; padding:0 5vw; border-bottom:1px solid var(--ink); }
+    .mast strong { font-size:17px; }
+    .mast span { font-size:13px; }
+    main { max-width:1330px; margin:auto; padding:clamp(30px,4.5vw,70px) 5vw 48px; }
+    .layout { display:grid; grid-template-columns:minmax(0,.74fr) minmax(0,1.18fr) minmax(0,.58fr); gap:clamp(18px,3.2vw,50px); align-items:start; }
+    .title { font-size:clamp(60px,6.7vw,94px); letter-spacing:-.07em; line-height:.98; font-weight:700; }
+    .title span { display:block; }
+    .instruction { margin:24px 0 32px; font-size:clamp(18px,1.75vw,23px); line-height:1.55; max-width:18em; }
+    .facts { padding-top:12px; border-top:1px solid var(--ink); display:grid; gap:8px; }
+    .facts div { display:grid; grid-template-columns:46px auto; align-items:baseline; gap:8px; }
+    dt { color:var(--muted); font-size:12px; }
+    dd { font-size:15px; }
+    .portrait { display:block; width:100%; height:auto; }
+    .credit { font-size:11px; margin-top:7px; color:var(--muted); }
+    .reader { display:contents; }
+    .strip { border-top:2px solid var(--ink); }
+    .strip h2 { font-size:22px; margin:7px 0 14px; }
+    .detail { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); align-items:center; gap:9px; padding:10px 0; border-top:1px solid var(--rule); }
+    .detail h3 { font-size:17px; }
+    .detail p { font-size:12px; color:var(--muted); line-height:1.5; margin-top:3px; }
+    .sample { display:block; width:100%; aspect-ratio:16/9; background-image:url("portrait.jpg"); background-repeat:no-repeat; }
+    /* Coordinates are for the 512 × 600 source, shared across all three layouts. */
+    .eye { background-size:400% auto; background-position:62.7604% 30.3030%; } /* (241,160,128,72) */
+    .cap { background-size:400% auto; background-position:51.3021% 4.5455%; } /* (197,24,128,72) */
+    .ribbons { background-size:320% auto; background-position:87.2159% 90.7843%; } /* (307,463,160,90) */
+    .namebox { margin-top:15px; }
+    .reveal { border:1px solid var(--ink); background:transparent; color:var(--ink); width:100%; min-height:44px; padding:9px 14px; text-align:left; font:inherit; cursor:pointer; }
+    .reveal::after { content:'＋'; float:right; }
+    .reveal[aria-expanded="true"]::after { content:'−'; }
+    .reveal:hover,.reveal:focus-visible { background:var(--ink); color:var(--paper); }
+    .reveal:focus-visible { outline:3px solid var(--rust); outline-offset:3px; }
+    #answer { margin-top:9px; font-size:20px; }
+    #answer span { display:block; font-size:16px; font-style:italic; }
+    [hidden],.poster { display:none; }
+    @media (min-width:701px) and (max-width:980px) {
+      .layout { grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); }
+      .strip { grid-column:1/-1; }
+      .details { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+      .namebox { max-width:320px; }
+    }
+    @media (max-width:700px) {
+      .mast { min-height:46px; padding:0 18px; }
+      main { padding:25px 18px 36px; }
+      .layout { grid-template-columns:minmax(0,2.12fr) minmax(78px,1fr); column-gap:14px; row-gap:18px; }
+      .intro { grid-column:1/-1; }
+      .title { font-size:clamp(37px,10vw,65px); }
+      .title span { display:inline; }
+      .instruction { margin:11px 0 13px; font-size:16px; line-height:1.45; max-width:100%; }
+      .facts { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; padding-top:8px; }
+      .facts div { display:block; }
+      .facts dt { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+      dd { font-size:13px; }
+      .facts div:first-child dd { color:var(--rust); font-weight:700; }
+      .portrait-board { grid-column:1; }
+      .credit { font-size:10px; }
+      .strip { display:contents; }
+      .strip h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+      .details { grid-column:2; }
+      .detail { display:block; padding:0; border:none; margin-bottom:8px; }
+      .detail:last-child { margin-bottom:0; }
+      .detail h3 { font:600 12px/1.3 system-ui,sans-serif; margin-top:3px; }
+      .detail p { display:none; }
+      .namebox { grid-column:1/-1; margin:0; }
+    }
+    .poster-mode .site { display:none; }
+    .poster-mode .poster { display:block; }
+    .poster { width:min(100%,800px); aspect-ratio:4/5; margin:auto; container-type:inline-size; }
+    .sheet { width:100%; height:100%; padding:4cqw 5cqw 3.4cqw; display:grid; grid-template-rows:auto 1fr auto; gap:3cqw; }
+    .pmast { display:flex; justify-content:space-between; align-items:center; padding-bottom:1.5cqw; border-bottom:1px solid var(--ink); font-size:1.9cqw; }
+    .pbody { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.72fr); grid-template-rows:auto 1fr; gap:3cqw; align-content:start; }
+    .phead h2 { font-size:10.8cqw; line-height:.95; letter-spacing:-.08em; margin:0 0 2.3cqw; }
+    .phead p { color:var(--rust); font-size:2.2cqw; font-weight:700; }
+    .pphoto { grid-column:2; grid-row:1/3; }
+    .pphoto img { display:block; width:100%; }
+    .pphoto figcaption { font-size:1.35cqw; margin-top:1cqw; color:var(--muted); }
+    .psamples { display:grid; align-content:start; gap:1.15cqw; }
+    .psamples figure { display:flex; align-items:center; gap:1.2cqw; border-top:1px solid var(--rule); padding-top:1cqw; }
+    .psamples .sample { width:65%; }
+    .psamples figcaption { font-size:1.9cqw; }
+    .pfoot { border-top:2px solid var(--ink); padding-top:2cqw; }
+    .pname { font-size:4.3cqw; line-height:1.1; font-weight:700; }
+    .pname em { display:block; font-size:3.2cqw; font-weight:400; }
+    .pdetails { display:flex; justify-content:space-between; margin-top:2.8cqw; font-size:2.05cqw; }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="mast"><strong class="serif">北岸图书馆</strong><span>馆藏活动</span></header>
+    <main class="layout">
+      <section class="intro" aria-labelledby="title">
+        <h1 class="title" id="title">读一张<span>肖像</span></h1>
+        <p class="instruction serif">沿着镜框往上找帽徽，再向下找制服上的彩色勋表。</p>
+        <dl class="facts">
+          <div><dt>日期</dt><dd>12 月 12 日</dd></div>
+          <div><dt>地点</dt><dd>北岸图书馆 · 二楼阅览室</dd></div>
+          <div><dt>入场</dt><dd>自由入场</dd></div>
+        </dl>
+      </section>
+      <figure class="portrait-board">
+        <img class="portrait" src="portrait.jpg" width="512" height="600" alt="一位海军军官戴着军帽和金色镜框，深色制服左胸佩有多色勋表。">
+        <figcaption class="credit">美国海军摄影 · James S. Davis</figcaption>
+      </figure>
+      <aside class="strip" aria-labelledby="look-title">
+        <h2 id="look-title">对照原图</h2>
+        <div class="details">
+          <div class="detail"><span class="sample eye" role="img" aria-label="放大局部：靠近镜腿的金色镜框"></span><div><h3>眼镜</h3><p>金色镜框折向镜腿。</p></div></div>
+          <div class="detail"><span class="sample cap" role="img" aria-label="放大局部：帽冠正中的金色徽章"></span><div><h3>帽徽</h3><p>深色帽冠托着金色徽章。</p></div></div>
+          <div class="detail"><span class="sample ribbons" role="img" aria-label="放大局部：制服左胸的彩色勋表"></span><div><h3>勋表</h3><p>在她的左胸，画面的右侧。</p></div></div>
+        </div>
+        <div class="namebox">
+          <button class="reveal" type="button" aria-controls="answer" aria-expanded="false">揭晓人物姓名</button>
+          <p class="serif" id="answer" hidden aria-live="polite">格蕾丝·霍珀<span>Grace Hopper</span></p>
+        </div>
+      </aside>
+    </main>
+  </div>
+  <section class="poster" aria-label="读一张肖像活动海报">
+    <div class="sheet">
+      <div class="pmast"><b>北岸图书馆</b><span>馆藏活动</span></div>
+      <div class="pbody">
+        <div class="phead"><h2>读一张<br>肖像</h2><p>12 月 12 日</p></div>
+        <figure class="pphoto"><img src="portrait.jpg" width="512" height="600" style="height:auto" alt="戴着眼镜、帽徽和勋表的海军军官"><figcaption>美国海军摄影 · James S. Davis</figcaption></figure>
+        <div class="psamples" aria-label="原图局部">
+          <figure><span class="sample eye"></span><figcaption>眼镜</figcaption></figure>
+          <figure><span class="sample cap"></span><figcaption>帽徽</figcaption></figure>
+          <figure><span class="sample ribbons"></span><figcaption>勋表</figcaption></figure>
+        </div>
+      </div>
+      <footer class="pfoot"><p class="pname serif">格蕾丝·霍珀<em>Grace Hopper</em></p><div class="pdetails"><b>北岸图书馆 · 二楼阅览室</b><span>自由入场</span></div></footer>
+    </div>
+  </section>
+  <script>
+    if (new URLSearchParams(location.search).get('format') === 'poster') {
+      document.documentElement.classList.add('poster-mode');
+    }
+    const reveal = document.querySelector('.reveal');
+    const answer = document.getElementById('answer');
+    reveal.addEventListener('click', () => {
+      answer.hidden = !answer.hidden;
+      reveal.setAttribute('aria-expanded', String(!answer.hidden));
+      reveal.firstChild.textContent = answer.hidden ? '揭晓人物姓名' : '收起人物姓名';
+    });
+  </script>
+</body>
+</html>
