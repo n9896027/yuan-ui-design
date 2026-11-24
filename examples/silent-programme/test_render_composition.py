@@ -26,6 +26,12 @@ def main():
 
     too_wide = {**right_top, "composition": {**right_top["composition"], "protectedRegion": {"x": .05, "y": .08, "width": .90, "height": .30}}}
     assert renderer.image_placement(too_wide, image, .8)["fit"] == "contain"
+    native_spec = importlib.util.spec_from_file_location("programme_sync", ROOT / "examples/silent-programme/wechat/scripts/sync_programme.py")
+    native = importlib.util.module_from_spec(native_spec)
+    native_spec.loader.exec_module(native)
+    assert native.safe_mode(right_top, image, .8) == "aspectFit"
+    middle = {**right_top, "composition": {**right_top["composition"], "protectedRegion": {"x": .42, "y": .30, "width": .12, "height": .30}}}
+    assert native.safe_mode(middle, image, .8) == "aspectFill"
     print("PASS safe cover maps source window to CSS/PPTX crop fractions; unsafe cover downgrades")
 
 

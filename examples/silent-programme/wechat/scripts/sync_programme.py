@@ -34,14 +34,13 @@ def safe_mode(film, image, frame_ratio):
     from PIL import Image
     with Image.open(image) as opened:
         source_ratio = opened.width / opened.height
+    # The native aspectFill mode always centers the crop; it has no CSS object-position.
     if source_ratio > frame_ratio:
-        visible = frame_ratio / source_ratio
-        center = min(max(region["x"] + region["width"] / 2, visible / 2), 1 - visible / 2)
-        safe = region["width"] <= visible and region["x"] >= center - visible / 2 and region["x"] + region["width"] <= center + visible / 2
+        axis, length, visible = "x", "width", frame_ratio / source_ratio
     else:
-        visible = source_ratio / frame_ratio
-        center = min(max(region["y"] + region["height"] / 2, visible / 2), 1 - visible / 2)
-        safe = region["height"] <= visible and region["y"] >= center - visible / 2 and region["y"] + region["height"] <= center + visible / 2
+        axis, length, visible = "y", "height", source_ratio / frame_ratio
+    start = (1 - visible) / 2
+    safe = start <= region[axis] and region[axis] + region[length] <= start + visible
     return "aspectFill" if safe else "aspectFit"
 
 
