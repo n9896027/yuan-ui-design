@@ -28,6 +28,10 @@ Download the checkout and keep each HTML file with its assets. Locate three adja
 
 The [SwiftUI inspection app](examples/native-inspection/README.md) builds for the iOS Simulator SDK and stores photos and drafts locally. Camera capture and background recovery still need device testing. OpenClaw successfully discovered the skill metadata in an isolated offline workspace.
 
+## Image composition in practice
+
+[Inspect the revised Moon still in the social export](examples/silent-programme/moon-comparison.jpg) and [compare two independent first drafts made from the same brief and photograph](benchmarks/portrait-composition/compare.html). Both blind agent reviewers preferred Huashu 3.5.0 on this task. A separate check found a misplaced annotation in that draft and missing first-screen event information in Yuan’s. [Brief, source files and evaluation](benchmarks/portrait-composition/README.md)
+
 ## Polish an existing screen with Unslop
 
 Ask Yuan to review a specific screen, for example “Unslop the work-order editor’s failed-save state on a phone. Keep the brand and verify retry and reload.” It can leave a working design in place, fix individual problems or revise the whole screen according to the findings. This workflow adapts Damir Sokolovsky’s Unslop under CC BY 4.0. [Workflow and credit](skills/yuan-ui-design/references/unslop.md) · [Upstream project](https://github.com/heydamir/unslop)
@@ -41,6 +45,8 @@ Open the [standalone demo file](examples/repair-desk/index.html), choose **Downl
 1. Edit the note (检修备注) on work order W-02, tick 模拟下一次保存失败 to fail the next save, and click 保存更改 to save.
 2. Read the failure message and check that the draft is still visible.
 3. Click 保存更改 again. Once the page confirms the save, refresh and check the note on W-02.
+
+The repair desk includes shareable states for a long name, pending save, failed save with a retained draft and a saved record after reload. The browser check uses the same form.
 
 To try the repair from scratch, start with the [original broken fixture](skills/yuan-ui-design/evals/fixtures/editor.html).
 

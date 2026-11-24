@@ -27,7 +27,7 @@ Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自�
 不要一次加载所有参考。遇到相应任务时完整读取：
 
 - 目标宿主影响导航、输入、系统能力、生命周期或验收时，读 [references/platform-surfaces.md](references/platform-surfaces.md)。同为网页，阅读型网站与长时间编辑的 Web App 可有不同结构。普通文案或配色修正可直接沿用当前平台。
-- 有按钮、表单、异步提交、持久状态、重试或主任务流：读 [references/interaction-truth.md](references/interaction-truth.md)。
+- 有按钮、表单、异步提交、持久状态、重试或主任务流：读 [交互与命名状态](references/interaction-truth.md)。需要同时重看画面和验证操作时，为同一份实际表单提供可复现的状态入口。
 - 改造已有仓库或连接现有组件、回调与状态：读 [references/repository-integration.md](references/repository-integration.md)；新原型与纯规格不加载。
 - 从截图或竞品提炼风格，或设计后台、落地页、编辑器的视觉系统时，读 [references/visual-quality.md](references/visual-quality.md)。
 - 用户要求 Unslop、去 AI 味或修整已有屏幕的模板感时，读 [Unslop 视觉精修](references/unslop.md)。先判断是否有值得改的地方，再选择局部修正或整屏调整。

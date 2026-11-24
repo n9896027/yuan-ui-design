@@ -39,6 +39,12 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 | 一个场次能否同步出不同格式 | 查看[节目页](examples/silent-programme/output/programme.html)、[可编辑演示稿](examples/silent-programme/output/programme.pptx)和[微信小程序工程](examples/silent-programme/wechat/README.md)。[整套成品与重建说明](examples/silent-programme/README.md)含三张真实剧照与宣传短片。 |
 | 原生 App 怎样保存巡检记录 | 打开 [SwiftUI 巡检工程](examples/native-inspection/README.md)。iOS SDK 已编译出 App 包，真机相机与后台恢复待验。 |
 
+可在维修台的「可复现状态」打开长设备名、保存中、失败留稿与保存后重开。同一个表单也用于键盘重试和重载检查。
+
+## 配图构图实测
+
+[查看《月球旅行记》社交图的实际裁切变化](examples/silent-programme/moon-comparison.jpg)，或[并排查看与 Huashu 3.5.0 的陌生题首稿](benchmarks/portrait-composition/compare.html)。两位匿名代理都更喜欢 Huashu 对观察点的引导。逐点复核也发现了勋表标错位置和首屏活动信息不足。[简报、两份源稿与评审记录](benchmarks/portrait-composition/README.md)
+
 ## 用 Unslop 精修已有界面
 
 在有源码的项目中试一句：「$yuan-ui-design 用 Unslop 检查工单编辑页。重点看手机上的保存失败，保留现有品牌和保存流程，只修能指出的问题。」它会按屏幕证据选择保留、局部修正或整屏调整，并用相同内容和状态复核。
