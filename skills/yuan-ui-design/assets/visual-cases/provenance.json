@@ -1,0 +1,42 @@
+{
+  "evaluationDate": "2026-11-24",
+  "evaluationRun": "2026-11-24-rendered-ab-1pjthjbi",
+  "conditions": {
+    "baseline": "2.0.0",
+    "candidate": "2.1.0"
+  },
+  "reviewers": "two independent Agent screenshot reviewers; not human testing",
+  "scope": "one paired generation per scenario",
+  "files": [
+    {
+      "path": "research-entry-late.png",
+      "source": "output/playwright/k6-research-desktop-viewport.png",
+      "sha256": "ae476124e39c5fa84fdd28cd6dac51a36fc97116efc9e3e60c078d7cf8398bd1"
+    },
+    {
+      "path": "research-entry-visible.png",
+      "source": "output/playwright/v3-research-desktop-viewport.png",
+      "sha256": "e4fe79579b4a393935014f73a3f13c563a62df1074809fa7cf12f58342d8aa74"
+    },
+    {
+      "path": "operations-draft-retained.png",
+      "source": "output/playwright/v3-operations-mobile-error.png",
+      "sha256": "55bcc19ccd984c7186681ef424cb6453a36e434825c6e9801429f0e78e3ec08f"
+    },
+    {
+      "path": "agent-hidden-overlay.png",
+      "source": "output/playwright/k6-agent-desktop-viewport.png",
+      "sha256": "574f62737c0bd73e2c4069057f3aba35a4448f6c7765249f9901c322711ce1fe"
+    },
+    {
+      "path": "agent-task-surface.png",
+      "source": "output/playwright/v3-agent-desktop-viewport.png",
+      "sha256": "8b6f7ac4b55ea75d1430aae9fc91eadf5348a3da907a7f9fd2d6d09f8787eb4c"
+    },
+    {
+      "path": "agent-partial-results.png",
+      "source": "output/playwright/repaired-v3-agent-desktop-partial-send-viewport.png",
+      "sha256": "74ec22746d5f83d18bf5f76449876445e740f2e0fa43d1d32dc357fe38c07c89"
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "evaluationDate": "2026-11-24",
+  "kind": "follow-up fixes, not a new skill A/B",
+  "evidenceLevel": "mock",
+  "evaluationRun": "2026-11-24-mobile-stream-ckj1dvd6",
+  "screenshots": [
+    {
+      "path": "operations-mobile-before.png",
+      "source": "output/playwright/comparison-before-operations-390.png",
+      "sha256": "02c8b5ec81974816295c5e43620af82b94d4c9f4f888df48d0fbb576c8407ab1"
+    },
+    {
+      "path": "operations-mobile-reflow.png",
+      "source": "output/playwright/comparison-improved-operations-390.png",
+      "sha256": "19cdd336556bcde82a8c8833b480cccced321cb957ccd622faef5df21d171517"
+    },
+    {
+      "path": "agent-mobile-job.png",
+      "source": "output/playwright/comparison-improved-agent-W02.png",
+      "sha256": "fe0d637984122b47b582ab2b8b07b0dacdcdee79aa8953dc6a3841f805d2990a"
+    }
+  ],
+  "limitations": [
+    "Screenshots cannot prove interactions",
+    "Native IME, screen reader, physical touch and real API not tested"
+  ],
+  "before.json": {
+    "evidenceLevel": "mock",
+    "previewPath": "/inputs/before/agent/index.html",
+    "checks": [],
+    "limitations": [
+      "Native IME and screen reader not tested"
+    ],
+    "localLayout": {
+      "clientWidth": 360,
+      "scrollWidth": 690
+    },
+    "selection": {
+      "checkedBefore": false,
+      "checkedAfterOtherEdit": true
+    },
+    "expected": "Power checked. Keep this note.",
+    "typing": {
+      "actual": "P",
+      "focused": false
+    },
+    "operationsLocalLayout": {
+      "clientWidth": 372,
+      "scrollWidth": 630
+    }
+  },
+  "before-handoff.json": {
+    "evidenceLevel": "mock",
+    "previewPath": "/inputs/before/agent/index.html",
+    "unknownBefore": "unknown",
+    "sendCallsBefore": 1,
+    "sendCallsAfter": 2,
+    "unknownAfterResend": "pending",
+    "queryCalls": 0,
+    "textBoundary": {
+      "expected": "备注 </textarea><b data-probe=\"literal-only\">原文</b> & < >",
+      "value": "备注 ",
+      "interpretedElements": 1
+    },
+    "limitations": [
+      "Only shared Mock effects, no external messages sent"
+    ]
+  },
+  "agent-collaboration.json": {
+    "previewPath": "/runs/improved/agent/index.html",
+    "evidenceLevel": "mock",
+    "results": [
+      {
+        "name": "continuous-keyboard-input",
+        "status": "passed",
+        "detail": {
+          "expected": "Power checked. Keep this note.",
+          "value": "Power checked. Keep this note.",
+          "focused": true,
+          "sameNode": true,
+          "start": 30,
+          "end": 30,
+          "fromStep": 0,
+          "toStep": 6,
+          "inputIntervalMs": 50
+        }
+      },
+      {
+        "name": "selection-and-review-scope",
+        "status": "passed",
+        "detail": {
+          "excluded": "W02",
+          "reviewHadExactScope": true,
+          "staleReviewHidden": true,
+          "sendCalls": 0
+        }
+      },
+      {
+        "name": "literal-text-boundary",
+        "status": "passed",
+        "detail": {
+          "literal": "备注 </textarea><b data-probe=\"literal-only\">字面文本</b> & < >\n第二行",
+          "textareaCount": 3,
+          "interpretedElements": 0
+        }
+      },
+      {
+        "name": "unknown-query-without-duplicate-send",
+        "status": "passed",
+        "detail": {
+          "before": {
+            "W01": "sent",
+            "W02": "sent",
+            "W03": "unknown"
+          },
+          "after": {
+            "W01": "sent",
+            "W02": "sent",
+            "W03": "sent"
+          },
+          "sendCalls": 1,
+          "queryCalls": 1,
+          "source": "shared synchronous Mock snapshot"
+        }
+      },
+      {
+        "name": "synthetic-composition-handler-boundary",
+        "status": "passed",
+        "detail": {
+          "fromStep": 0,
+          "toStep": 6,
+          "during": {
+            "value": "组合输入中的临时文字",
+            "sameNode": true,
+            "focused": true,
+            "start": 10,
+            "end": 10
+          },
+          "method": "synthetic DOM CompositionEvent/InputEvent only",
+          "nativeIME": "NOT TESTED"
+        }
+      }
+    ],
+    "pageErrors": [],
+    "limitations": [
+      "Native IME composition not tested; synthetic events test application handlers only",
+      "No real service, API idempotency, screen reader, physical touch, browser zoom or field performance tested"
+    ]
+  },
+  "mobile-content.json": {
+    "evidenceLevel": "mock",
+    "results": [
+      {
+        "name": "operations-local-content:320",
+        "status": "passed",
+        "detail": {
+          "page": {
+            "viewport": 320,
+            "page": 320
+          },
+          "queue": {
+            "width": 286,
+            "scroll": 286
+          },
+          "fields": 20,
+          "editedJobIds": [
+            "W01",
+            "W02",
+            "W03",
+            "W04",
+            "W05"
+          ]
+        }
+      },
+      {
+        "name": "operations-local-content:390",
+        "status": "passed",
+        "detail": {
+          "page": {
+            "viewport": 390,
+            "page": 390
+          },
+          "queue": {
+            "width": 356,
+            "scroll": 356
+          },
+          "fields": 20,
+          "editedJobIds": [
+            "W01",
+            "W02",
+            "W03",
+            "W04",
+            "W05"
+          ]
+        }
+      },
+      {
+        "name": "operations-local-content:1280",
+        "status": "passed",
+        "detail": {
+          "page": {
+            "viewport": 1280,
+            "page": 1280
+          },
+          "queue": {
+            "width": 732,
+            "scroll": 732
+          },
+          "fields": 20,
+          "editedJobIds": [
+            "W01",
+            "W02",
+            "W03",
+            "W04",
+            "W05"
+          ]
+        }
+      },
+      {
+        "name": "operations-literal-save-and-refresh",
+        "status": "passed",
+        "detail": {
+          "literal": "机柜 </td><b data-probe=\"literal-device\">原文</b> & < >",
+          "interpretedElements": 0,
+          "persisted": true
+        }
+      },
+      {
+        "name": "agent-task-fields:320",
+        "status": "passed",
+        "detail": {
+          "page": {
+            "viewport": 320,
+            "page": 320
+          },
+          "jobs": [
+            {
+              "id": "W01",
+              "width": 290,
+              "scroll": 290
+            },
+            {
+              "id": "W02",
+              "width": 290,
+              "scroll": 290
+            },
+            {
+              "id": "W03",
+              "width": 290,
+              "scroll": 290
+            }
+          ],
+          "allFiveTaskFieldsPresent": true
+        }
+      },
+      {
+        "name": "agent-task-fields:390",
+        "status": "passed",
+        "detail": {
+          "page": {
+            "viewport": 390,
+            "page": 390
+          },
+          "jobs": [
+            {
+              "id": "W01",
+              "width": 360,
+              "scroll": 360
+            },
+            {
+              "id": "W02",
+              "width": 360,
+              "scroll": 360
+            },
+            {
+              "id": "W03",
+              "width": 360,
+              "scroll": 360
+            }
+          ],
+          "allFiveTaskFieldsPresent": true
+        }
+      },
+      {
+        "name": "agent-task-fields:1280",
+        "status": "passed",
+        "detail": {
+          "page": {
+            "viewport": 1280,
+            "page": 1280
+          },
+          "jobs": [
+            {
+              "id": "W01",
+              "width": 879,
+              "scroll": 879
+            },
+            {
+              "id": "W02",
+              "width": 879,
+              "scroll": 879
+            },
+            {
+              "id": "W03",
+              "width": 879,
+              "scroll": 879
+            }
+          ],
+          "allFiveTaskFieldsPresent": true
+        }
+      }
+    ],
+    "pageErrors": [],
+    "environment": {
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+      "platform": "MacIntel",
+      "dpr": 1
+    },
+    "limitations": [
+      "CSS viewport sizes are not physical mobile devices or browser zoom",
+      "No screen reader, native IME or field performance tested"
+    ]
+  }
+}
