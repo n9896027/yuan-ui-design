@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yuan-UI-design overview</title>
+    <link rel="icon" href="data:," />
+    <style>
+      :root {
+        --paper: #f2efe6;
+        --ink: #162019;
+        --muted: #4e5a51;
+        --line: #c8c9be;
+        --red: #b54432;
+        --green: #135743;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        width: 1600px;
+        height: 900px;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Georgia, "Songti SC", "STSong", serif;
+      }
+
+      main {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 56px 72px 48px;
+        background:
+          linear-gradient(90deg, transparent 0 74px, rgba(22, 32, 25, .04) 74px 75px, transparent 75px),
+          radial-gradient(circle at 90% 3%, rgba(19, 87, 67, .12), transparent 28%),
+          var(--paper);
+      }
+
+      .masthead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid var(--ink);
+        padding-top: 14px;
+      }
+
+      .mark,
+      .caption {
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 13px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .mark { color: var(--red); }
+      .intro {
+        display: grid;
+        grid-template-columns: 1.08fr .92fr;
+        gap: 64px;
+        margin-top: 43px;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 790px;
+        font-size: 78px;
+        font-weight: 400;
+        line-height: .98;
+        letter-spacing: -.065em;
+      }
+
+      h1 span { color: var(--green); }
+
+      .intro p {
+        align-self: end;
+        max-width: 455px;
+        margin: 0 0 8px;
+        font-size: 23px;
+        line-height: 1.58;
+        color: var(--muted);
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: 1.05fr .62fr 1.05fr;
+        gap: 20px;
+        align-items: end;
+        height: 480px;
+        margin-top: 34px;
+      }
+
+      figure {
+        position: relative;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #dfe6df;
+      }
+
+      figure:nth-child(2) { height: 420px; }
+
+      figure::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 10px solid rgba(242, 239, 230, .6);
+        pointer-events: none;
+      }
+
+      figure img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left top;
+      }
+
+      figure:nth-child(2) img { object-position: center 7%; }
+
+      figcaption {
+        position: absolute;
+        z-index: 1;
+        right: 22px;
+        bottom: 19px;
+        padding: 8px 10px;
+        background: rgba(242, 239, 230, .93);
+        color: var(--ink);
+      }
+
+      .caption { font-size: 12px; letter-spacing: .09em; }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="masthead">
+        <div class="mark">YUAN-UI-DESIGN</div>
+      </header>
+      <section class="intro">
+        <h1>用 Codex 设计<br /><span>和修整产品界面。</span></h1>
+        <p>从研究内容入口、现场工单的移动修整，到 AI 工作台：围绕真实任务、状态与恢复路径组织界面。</p>
+      </section>
+      <section class="gallery" aria-label="Product interface examples">
+        <figure>
+          <img src="../../skills/yuan-ui-design/assets/visual-cases/research-entry-visible.png" alt="Research website interface example" />
+          <figcaption class="caption">研究入口</figcaption>
+        </figure>
+        <figure>
+          <img src="../../skills/yuan-ui-design/assets/visual-cases/operations-mobile-reflow.png" alt="Mobile repair workflow example" />
+          <figcaption class="caption">移动修整</figcaption>
+        </figure>
+        <figure>
+          <img src="../../skills/yuan-ui-design/assets/visual-cases/agent-partial-results.png" alt="AI workbench interface example" />
+          <figcaption class="caption">AI 工作台</figcaption>
+        </figure>
+      </section>
+    </main>
+  </body>
+</html>

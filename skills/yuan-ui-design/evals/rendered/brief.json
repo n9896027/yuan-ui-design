@@ -1,0 +1,59 @@
+{
+  "suite": "rendered-product-ui",
+  "version": "1.0",
+  "scope": "one independent paired implementation per three scenarios",
+  "constraints": {
+    "technology": "原生 HTML/CSS/JS，无构建依赖、CDN、网络请求、付费生成或外部 API；每项一个 index.html，使用同目录 assets 中的 data.js/mock.js；可以使用提供的原创 SVG。",
+    "budget": "每组 3 个 HTML 文件合计不超过 60000 UTF-8 bytes，另可写最多 500 字的 implementation-notes.md；仅一轮实现，主代理接手后冻结首轮产物。",
+    "ownership": "构建代理不启动浏览器或服务，不执行浏览器验证；主代理统一控制 headless 会话。",
+    "truth": "数据和 AI 流程是示例/Mock，页面应有克制但可见的示例标识，不假装已联网或调用模型。"
+  },
+  "tasks": [
+    {
+      "id": "research",
+      "prompt": "做一个完整、可操作且有鲜明辨识度的潮间带研究室中文网站。访客能找到研究、进入详情、理解采样/缺测边界并联系团队。手机优先，完成正式页面呈现，不只写规格。",
+      "context": "使用 EVAL_DATA.studies 的三份示例内容。没有现成品牌；只有原创 shoreline.svg 采样示意图，没有真实照片或实测坐标。可设计自己的视觉语言与阅读结构。联系邮箱 contact@tide-lab.example，仅 mailto。",
+      "selectors": {
+        "filter-data": "开放数据筛选的按钮",
+        "filter-all": "显示全部研究的按钮",
+        "study-thermal": "打开 thermal 研究详情的链接或按钮",
+        "data-boundary": "详情中可见的缺测/采样限制说明",
+        "detail-back": "从详情返回列表的按钮或链接",
+        "contact": "mailto 链接"
+      }
+    },
+    {
+      "id": "operations",
+      "prompt": "修好给定维修后台：手机上长设备名挡住保存按钮，保存失败会丢掉刚写的备注。保持既有紧凑后台与原组件，只修编辑主链，交付可运行页面。",
+      "context": "从 operations-starter.html 开始。初选 W02。实际数据来自 EvaluationStore.readJobs/saveJob，已提供可切换模拟失败和本机 localStorage。保存失败不应写入、重试成功后刷新仍应看到该工单备注。",
+      "selectors": {
+        "edit-W02": "打开 W02 的现有按钮",
+        "device": "设备名称输入框",
+        "note": "备注 textarea",
+        "save": "保存按钮",
+        "fail-save": "模拟失败 checkbox",
+        "save-status": "role=status 的反馈，data-state 使用 idle/dirty/saving/saved/error"
+      }
+    },
+    {
+      "id": "agent",
+      "prompt": "做一个完整 AI 维修排班工作台。协调员生成下周草案、手改备注、选择发送项目并审阅后发送；执行途中可以停止，并能理解部分完成与断线结果未知。请交付产品级页面呈现和真实可操作的 Mock 工作流。",
+      "context": "必须使用同一份 EvaluationAgent，不复制或改写后端模拟器。new EvaluationAgent(); subscribe(snapshot) 接收状态；generate()/editNote(id,note)/cancel()/send(ids)/queryStatus() 为可用命令。生成每350ms更新一个建议，共6步，取消请求350ms后确认停止；批量发送第3项结果未知，queryStatus确认其已发送。页面首发Web，已有表格、表单、差异和状态等控件语义，无固定品牌。",
+      "selectors": {
+        "generate": "生成草案按钮",
+        "cancel": "停止/取消按钮",
+        "run-status": "运行反馈，data-state 与 snapshot.run.status 一致",
+        "note-W02": "W02 备注输入框/textarea",
+        "select-W01": "W01 发送选择 checkbox",
+        "select-W02": "W02 发送选择 checkbox",
+        "select-W03": "W03 发送选择 checkbox",
+        "review-send": "进入发送审阅按钮",
+        "confirm-send": "审阅后真正发送按钮",
+        "send-status-W01": "逐项反馈，data-state 与 snapshot.send[id] 一致",
+        "send-status-W02": "同上",
+        "send-status-W03": "同上",
+        "query-status": "查询未知发送结果按钮"
+      }
+    }
+  ]
+}
