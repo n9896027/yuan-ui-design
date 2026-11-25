@@ -42,6 +42,13 @@ jobs:
         run: npm run test:url-baseline
       - name: Exercise photo inspection on desktop and mobile layouts
         run: npm run test:photo
+      - name: Verify portrait comparison and return desk interactions
+        run: |
+          node benchmarks/portrait-composition/capture.cjs "$RUNNER_TEMP/portrait"
+          node benchmarks/portrait-composition/build-comparison.mjs "$RUNNER_TEMP/portrait" "$RUNNER_TEMP/portrait-comparison.html"
+          node benchmarks/return-desk-polish/check.cjs "$RUNNER_TEMP/return-desk"
+      - name: Verify tide reading review and local write recovery
+        run: node benchmarks/tide-reading/check.cjs "$RUNNER_TEMP/tide-reading"
       - name: Verify editable slides and rendered programme assets
         run: python3 examples/silent-programme/check.py
       - name: Check protected picture regions across three layouts

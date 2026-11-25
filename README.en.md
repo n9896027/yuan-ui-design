@@ -8,7 +8,7 @@ A Codex skill for designing and repairing product interfaces. Give it a product 
 
 ## Install in Codex
 
-The command below installs the public **2.4.0** snapshot. This development checkout contains **2.5.0-dev.4**.
+The command below installs the public **2.4.0** snapshot. This development branch contains **2.5.0-dev.5**. To install it locally, copy `skills/yuan-ui-design` from the current checkout into your Codex skills directory. Check for local edits before replacing an existing installation.
 
 ```text
 Use $skill-installer to install https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -31,6 +31,8 @@ The [SwiftUI inspection app](examples/native-inspection/README.md) builds for th
 ## Image composition in practice
 
 [Inspect the revised Moon still](examples/silent-programme/moon-comparison.jpg) or [compare the Huashu first draft (A), the original Yuan draft (B) and the feedback-informed Yuan revision (C)](benchmarks/portrait-composition/compare.html). C pairs three details with the full photograph before revealing the sitter’s name. [Portrait evaluation](benchmarks/portrait-composition/README.md) · [Two independent redesigns of the same tool-return page](benchmarks/return-desk-polish/README.md)
+
+The [tide-reading exercise](benchmarks/tide-reading/README.md) compares two independent Yuan drafts and a revision. Open the revision, compare the two 07:25 readings, record a decision, and reload to verify it. The browser test also simulates a write failure and verifies recovery.
 
 ## Polish an existing screen with Unslop
 

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f1eee5" />
+  <title>潮尺读数复核｜西堤自然课</title>
+  <style>
+    :root {
+      --paper: #f1eee5;
+      --paper-bright: #fbfaf5;
+      --ink: #182a2d;
+      --muted: #667477;
+      --rule: #bac5c0;
+      --water: #175e67;
+      --water-dark: #12474e;
+      --algae: #37634b;
+      --coral: #b94b38;
+      --sand: #e2d5b7;
+      --shadow: 0 18px 45px rgba(26, 46, 44, .12);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: ui-rounded, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+    button { font: inherit; }
+    .page { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 56px; }
+    .masthead { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; padding-bottom: 22px; border-bottom: 2px solid var(--ink); }
+    .eyebrow, .label { margin: 0; color: var(--water); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+    h1 { margin: 8px 0 0; font-size: clamp(30px, 5vw, 52px); line-height: 1.04; letter-spacing: -.055em; }
+    .place { margin: 13px 0 0; font-size: 15px; color: var(--muted); }
+    .stamp { flex: 0 0 auto; border: 1px solid var(--water); color: var(--water); padding: 9px 11px 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.2; transform: rotate(2deg); }
+    .intro { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; padding: 26px 0 24px; }
+    .intro p { max-width: 570px; margin: 8px 0 0; color: #405154; line-height: 1.7; }
+    .ledger { display: grid; grid-template-columns: repeat(2, minmax(116px, 1fr)); border: 1px solid var(--rule); background: rgba(251,250,245,.55); }
+    .ledger div { padding: 10px 14px; }
+    .ledger div + div { border-left: 1px solid var(--rule); }
+    .ledger strong { display: block; margin-top: 3px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 21px; color: var(--water-dark); }
+    .ledger span { color: var(--muted); font-size: 12px; }
+    .workflow { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 30px; border-top: 1px solid var(--rule); padding-top: 22px; }
+    .steps { display: grid; gap: 7px; align-content: start; }
+    .step { width: 100%; display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 8px; min-height: 54px; padding: 8px 9px; text-align: left; border: 1px solid transparent; background: transparent; color: var(--ink); cursor: pointer; border-radius: 3px; }
+    .step:hover { background: rgba(255,255,255,.4); }
+    .step:focus-visible, .action:focus-visible { outline: 3px solid #e69739; outline-offset: 2px; }
+    .step[aria-current="true"] { border-color: var(--water); background: var(--paper-bright); }
+    .step-number { font-family: ui-monospace, monospace; color: var(--muted); font-size: 12px; }
+    .step time { font-family: ui-monospace, monospace; font-weight: 800; }
+    .mark { width: 11px; height: 11px; border: 1px solid var(--rule); border-radius: 50%; }
+    .mark.agree { background: var(--algae); border-color: var(--algae); }
+    .mark.review { background: var(--coral); border-color: var(--coral); }
+    .comparison { min-width: 0; }
+    .comparison-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .comparison h2 { margin: 5px 0 0; font-size: 23px; letter-spacing: -.03em; }
+    .counter { color: var(--muted); font-family: ui-monospace, monospace; font-size: 12px; }
+    .measurements { display: grid; grid-template-columns: 1fr 1fr; margin-top: 17px; border: 1px solid var(--ink); box-shadow: var(--shadow); }
+    .reading { min-height: 216px; padding: 23px; background: var(--paper-bright); }
+    .reading + .reading { border-left: 1px solid var(--ink); background: #e5ede8; }
+    .reading-label { display: flex; align-items: center; gap: 9px; margin: 0; font-size: 13px; font-weight: 800; }
+    .pencil { width: 12px; height: 12px; border: 2px solid var(--water); border-radius: 50% 50% 2px 50%; transform: rotate(-45deg); }
+    .digital { width: 12px; height: 12px; border: 2px solid var(--water); }
+    .value { display: block; margin-top: 30px; font: 800 clamp(64px, 11vw, 112px)/.78 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -.11em; color: var(--water-dark); }
+    .unit { margin-left: 10px; color: var(--muted); font-size: 16px; font-weight: 700; letter-spacing: 0; }
+    .scale { margin-top: 34px; height: 9px; border-top: 1px solid var(--rule); background: repeating-linear-gradient(90deg, transparent 0 19px, var(--rule) 20px 21px); }
+    .verdict { margin: 23px 0 0; padding: 14px 15px; border-left: 4px solid var(--rule); background: rgba(255,255,255,.48); color: #405154; line-height: 1.5; }
+    .verdict strong { color: var(--ink); }
+    .verdict.agree { border-color: var(--algae); }
+    .verdict.review { border-color: var(--coral); }
+    .actions { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; margin-top: 16px; }
+    .action { min-height: 48px; padding: 10px 14px; border: 1px solid var(--ink); border-radius: 2px; background: var(--paper-bright); color: var(--ink); cursor: pointer; font-weight: 800; }
+    .action:hover { transform: translateY(-1px); box-shadow: 3px 3px 0 var(--ink); }
+    .action.agree { border-color: var(--algae); color: var(--algae); }
+    .action.agree.active { background: var(--algae); color: white; }
+    .action.review { border-color: var(--coral); color: var(--coral); }
+    .action.review.active { background: var(--coral); color: white; }
+    .action.undo { color: var(--muted); border-color: var(--rule); }
+    .action:disabled { cursor: not-allowed; opacity: .45; transform: none; box-shadow: none; }
+    .privacy { margin: 22px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .privacy::before { content: "↳ "; color: var(--water); font-weight: 800; }
+    .live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    @media (max-width: 680px) {
+      .page { width: min(100% - 24px, 600px); padding-top: 19px; }
+      .masthead { gap: 10px; } .stamp { font-size: 10px; padding: 7px; }
+      .intro { display: block; padding: 20px 0; } .ledger { margin-top: 20px; }
+      .workflow { grid-template-columns: 1fr; gap: 20px; }
+      .steps { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+      .step { grid-template-columns: 1fr auto; min-height: 64px; padding: 7px; } .step-number { display: none; }
+      .step time { font-size: 14px; } .mark { justify-self: end; }
+      .measurements { grid-template-columns: 1fr; } .reading { min-height: 153px; padding: 18px; } .reading + .reading { border-top: 1px solid var(--ink); border-left: 0; }
+      .value { margin-top: 20px; font-size: 72px; } .scale { margin-top: 24px; }
+      .actions { grid-template-columns: 1fr 1fr; } .action.undo { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } .action:hover { transform: none; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <div><p class="eyebrow">西堤自然课 · 周末观测簿</p><h1>潮尺读数复核</h1><p class="place">观测点：西堤木栈道　·　11 月 16 日</p></div>
+      <div class="stamp" aria-label="本机记录">LOCAL<br>RECORD</div>
+    </header>
+    <section class="intro" aria-label="任务说明">
+      <div><p class="label">本次任务</p><p>逐对比对同一时刻的手写记录与录入值。判断后会保留在这台设备的当前浏览器中；刷新页面可继续复核。</p></div>
+      <div class="ledger" aria-label="复核进度"><div><span>已判断</span><strong id="doneCount">0 / 3</strong></div><div><span>需回查</span><strong id="reviewCount">0</strong></div></div>
+    </section>
+    <section class="workflow" aria-label="读数复核区">
+      <nav class="steps" aria-label="选择读数时刻" id="steps"></nav>
+      <section class="comparison" aria-labelledby="comparisonTitle">
+        <div class="comparison-head"><div><p class="label">当前比对</p><h2 id="comparisonTitle">07:10 的读数</h2></div><span class="counter" id="position">01 / 03</span></div>
+        <div class="measurements">
+          <article class="reading"><p class="reading-label"><span class="pencil" aria-hidden="true"></span>手写记录</p><data class="value" id="writtenValue" value="42">42<span class="unit">cm</span></data><div class="scale" aria-hidden="true"></div></article>
+          <article class="reading"><p class="reading-label"><span class="digital" aria-hidden="true"></span>录入值</p><data class="value" id="enteredValue" value="42">42<span class="unit">cm</span></data><div class="scale" aria-hidden="true"></div></article>
+        </div>
+        <p class="verdict" id="verdict"><strong>尚未判断。</strong> 比对两处数字后，记录本对读数的复核结果。</p>
+        <div class="actions" aria-label="记录当前判断">
+          <button class="action agree" type="button" id="agreeBtn">标为一致</button>
+          <button class="action review" type="button" id="reviewBtn">标为需回查</button>
+          <button class="action undo" type="button" id="undoBtn">撤销此对判断</button>
+        </div>
+        <p class="privacy">课程资料仅保存在本机此浏览器；不会发送到任何外部服务。</p>
+      </section>
+    </section>
+    <p class="live" id="announcer" aria-live="polite"></p>
+  </main>
+  <script>
+    (() => {
+      const readings = [
+        { time: '07:10', written: 42, entered: 42 },
+        { time: '07:25', written: 56, entered: 65 },
+        { time: '07:40', written: 68, entered: 68 }
+      ];
+      const storageKey = 'xitidi-natural-class-tide-review-v1';
+      let selected = 0;
+      let judgments = [null, null, null];
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey));
+        if (Array.isArray(saved) && saved.length === readings.length && saved.every(v => v === null || v === 'agree' || v === 'review')) judgments = saved;
+      } catch (_) { /* Storage may be unavailable; the page remains usable for this visit. */ }
+      const $ = id => document.getElementById(id);
+      const steps = $('steps'), announcer = $('announcer');
+      function save() { try { localStorage.setItem(storageKey, JSON.stringify(judgments)); } catch (_) { announcer.textContent = '浏览器未允许本机保存；本次判断将在离开或刷新后丢失。'; } }
+      function labelFor(judgment) { return judgment === 'agree' ? '一致' : judgment === 'review' ? '需回查' : '未判断'; }
+      function render() {
+        const data = readings[selected], verdict = $('verdict'), judgment = judgments[selected];
+        $('comparisonTitle').textContent = `${data.time} 的读数`;
+        $('position').textContent = `${String(selected + 1).padStart(2, '0')} / 03`;
+        $('writtenValue').firstChild.nodeValue = data.written;
+        $('enteredValue').firstChild.nodeValue = data.entered;
+        const done = judgments.filter(Boolean).length, review = judgments.filter(v => v === 'review').length;
+        $('doneCount').textContent = `${done} / 3`; $('reviewCount').textContent = review;
+        verdict.className = `verdict${judgment ? ' ' + judgment : ''}`;
+        verdict.innerHTML = judgment === 'agree' ? '<strong>已记录为一致。</strong> 这对读数已完成复核。' : judgment === 'review' ? '<strong>已标记为需回查。</strong> 请回看原始手写记录或现场资料。' : '<strong>尚未判断。</strong> 比对两处数字后，记录本对读数的复核结果。';
+        $('agreeBtn').classList.toggle('active', judgment === 'agree'); $('reviewBtn').classList.toggle('active', judgment === 'review'); $('undoBtn').disabled = !judgment;
+        steps.innerHTML = readings.map((r, i) => `<button type="button" class="step" data-index="${i}" aria-current="${i === selected}" aria-label="${r.time}，${labelFor(judgments[i])}"><span class="step-number">${String(i + 1).padStart(2, '0')}</span><time>${r.time}</time><span class="mark ${judgments[i] || ''}" aria-hidden="true"></span></button>`).join('');
+        steps.querySelectorAll('button').forEach(button => button.addEventListener('click', () => { selected = Number(button.dataset.index); render(); $('comparisonTitle').focus?.(); }));
+      }
+      function setJudgment(next) { judgments[selected] = next; save(); render(); announcer.textContent = `${readings[selected].time} 已${next ? '标为' + labelFor(next) : '撤销判断'}。`; }
+      $('agreeBtn').addEventListener('click', () => setJudgment('agree'));
+      $('reviewBtn').addEventListener('click', () => setJudgment('review'));
+      $('undoBtn').addEventListener('click', () => setJudgment(null));
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -2,12 +2,12 @@
 name: yuan-ui-design
 description: 设计、实现或审计产品 UI，可按 Unslop 方法为已有界面去除模板感、精修视觉。适用于网站与 Web App、原生移动及桌面 App、后台与编辑器、AI/agent 界面、设计系统、互动教学及产品 3D，也支持基于同一份内容交付网页、演示稿与社交图文。根据使用场景设计视觉与操作，在目标宿主验证。纯图片或模型资产制作、纯后端和商业品牌复刻不在范围内。
 metadata:
-  version: "2.5.0-dev.4"
-  last-reviewed: "2026-11-24"
+  version: "2.5.0-dev.5"
+  last-reviewed: "2026-11-25"
   short-description: Build distinct, truthful, accessible product UI
 ---
 
-# Yuan-UI-design v2.5.0-dev.4
+# Yuan-UI-design v2.5.0-dev.5
 
 Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自当前产品的任务、内容与设计系统。目标不是“做得像某个 AI 产品”，而是把真实产品任务变成有辨识度、可操作、可验证的界面。
 
@@ -138,6 +138,8 @@ Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自�
 - 组件语义、密度和状态，而不是孤立样式；
 - 真实内容长度、语言和数据形态；
 - 响应式重排规则，不只是断点数字。
+
+首稿先用真实内容排出一次「找到对象 → 看依据 → 做判断或操作」。在目标视口从页面入口走一遍，确认能在需要作决定的地方看全依据；涉及比较、匹配或空间定位时，按 [视觉方法](references/visual-quality.md#用内容决定首稿) 选择结构。
 
 已有 tokens 时优先扩展。需要跨工具交换时，可采用带 `$type` 和 `$value` 的 DTCG token 格式；不要为了格式迁移破坏现有构建。
 

@@ -8,7 +8,7 @@
 
 ## 安装到 Codex
 
-下面的安装链接固定到公开的 **2.4.0**。本开发分支的技能版本是 **2.5.0-dev.4**，可从当前检出目录安装。
+下面的安装链接固定到公开的 **2.4.0**。本开发分支提供 **2.5.0-dev.5**，下载当前分支后可按下方步骤手动安装。
 
 ```text
 请用 $skill-installer 安装 https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -23,7 +23,7 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 <details>
 <summary>手动安装或检查已安装版本</summary>
 
-下载含技能的分支或[固定版本](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1)，将其中的 `skills/yuan-ui-design` 文件夹复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。打开已安装目录里的 `SKILL.md`，固定版本的 `metadata.version` 为 `2.4.0`，本开发分支为 `2.5.0-dev.4`。已有定制版本时，先比较差异，再决定是否替换。
+下载含技能的分支或[固定版本](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1)，将其中的 `skills/yuan-ui-design` 文件夹复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。打开已安装目录里的 `SKILL.md` 查看 `metadata.version`。已有定制版本时，先比较差异，再决定是否替换。
 
 </details>
 
@@ -34,6 +34,7 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 | 想验证的能力 | 可以操作的样例 |
 | --- | --- |
 | 配图是否真能认出接口 | 打开[实物辨认页](examples/device-inspection/index.html)，分别找出 USB-C、HDMI 0 和 HDMI 1。选中标记后核对局部放大图。 |
+| 比较依据和判断能否同屏 | 打开[潮尺读数复核](benchmarks/tide-reading/revision/index.html)，选中 07:25，找出 56 cm 和 65 cm 的差异，标为需回查后刷新。[两份首稿与修订对照](benchmarks/tide-reading/README.md) |
 | 3D 配置是否可撤回 | 打开[接口配置器](examples/port-configurator/index.html)，旋转机壳示意、尝试冲突配件、撤回，再保存并刷新。 |
 | 改完一段字幕会不会丢掉另一段 | 打开[字幕编辑器和反例](skills/yuan-ui-design/evals/subtitle-persistence/README.md)，复现保存旧值与迟到回执。 |
 | 一个场次能否同步出不同格式 | 查看[节目页](examples/silent-programme/output/programme.html)、[可编辑演示稿](examples/silent-programme/output/programme.pptx)和[微信小程序工程](examples/silent-programme/wechat/README.md)。[整套成品与重建说明](examples/silent-programme/README.md)含三张真实剧照与宣传短片。 |
