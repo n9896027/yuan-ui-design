@@ -3,13 +3,13 @@
 import { createHash } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { readdir, readFile, realpath, stat } from 'node:fs/promises';
-import { dirname, extname, relative, resolve, sep } from 'node:path';
+import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
-const textExtensions = new Set(['.css', '.html', '.js', '.json', '.md', '.mjs', '.txt', '.yaml', '.yml']);
-const ignoredDirectories = new Set(['.git', '.playwright-cli', 'node_modules']);
+const textExtensions = new Set(['.cjs', '.css', '.html', '.js', '.json', '.md', '.mjs', '.py', '.txt', '.yaml', '.yml']);
+const ignoredDirectories = new Set(['.git', '.playwright-cli', '.serena', '__pycache__', 'node_modules']);
 
 function fail(message) {
   errors.push(message);
@@ -25,7 +25,8 @@ async function filesUnder(directory) {
   async function walk(current) {
     for (const entry of await readdir(current, { withFileTypes: true })) {
       if (entry.isDirectory()) {
-        if (!ignoredDirectories.has(entry.name)) await walk(resolve(current, entry.name));
+        const child = resolve(current, entry.name);
+        if (!ignoredDirectories.has(entry.name) && child !== resolve(root, 'output/playwright') && child !== resolve(root, 'examples/native-inspection/.build')) await walk(child);
       } else if (entry.isFile()) {
         files.push(resolve(current, entry.name));
       } else if (entry.isSymbolicLink()) {
@@ -136,7 +137,23 @@ async function main() {
     const extension = extname(file).toLowerCase();
     if (extension === '.json') {
       try {
-        JSON.parse(await readFile(file, 'utf8'));
+        const parsed = JSON.parse(await readFile(file, 'utf8'));
+        if (file.endsWith('.provenance.json') && parsed.asset) {
+          const asset = parsed.asset;
+          if (typeof asset.path !== 'string' || isAbsolute(asset.path)) {
+            fail(`${relative(root, file)} requires a portable asset path`);
+          } else {
+            const image = resolve(dirname(file), asset.path);
+            if (!withinRoot(image) || !existsSync(image)) {
+              fail(`${relative(root, file)} has a missing image`);
+            } else {
+              const bytes = await readFile(image);
+              if (bytes.length !== asset.bytes || createHash('sha256').update(bytes).digest('hex') !== asset.sha256) {
+                fail(`${relative(root, file)} image size or hash changed`);
+              }
+            }
+          }
+        }
       } catch (error) {
         fail(`${relative(root, file)} is not valid JSON: ${error.message}`);
       }

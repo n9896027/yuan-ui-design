@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>周六归还 · 南桥社区工具借用处</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f3ff;color:#23304b;font:16px/1.5 system-ui,sans-serif}header,main{max-width:1120px;margin:auto;padding:18px 24px}header{color:#7440ca;font-weight:700}.hero{background:linear-gradient(115deg,#6558e8,#a34bbc);color:white;border-radius:24px;padding:32px}.hero h1{margin:10px 0;font-size:42px}.tag,small{display:inline-block;border-radius:99px;padding:5px 12px;background:#efe5ff;color:#7337bc}.rows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:24px 0}article,aside{border-radius:20px;background:#fff;padding:22px;box-shadow:0 8px 36px #734bb11c}h2{margin:12px 0}button{font:inherit;color:white;background:#7651cf;border:0;border-radius:99px;padding:9px 16px;cursor:pointer}button[aria-pressed=true]{background:#284e42}output{display:block;margin-top:10px}footer{margin-top:18px} @media(max-width:620px){.rows{grid-template-columns:1fr}.hero h1{font-size:32px}}</style>
+<header>南桥社区工具借用处</header><main><section class="hero"><span class="tag">SMART HUB</span><h1>周六归还交接</h1><p>用全新的协作体验，开启高效管理的一天。</p></section><div class="rows">
+<article><small>待点交</small><h2>冲击钻</h2><p>工具号 D-17</p><p>归还时核对两块电池。</p><button type="button" data-id="D-17" aria-pressed="false">标为已点交</button></article>
+<article><small>待点交</small><h2>扭矩扳手</h2><p>工具号 W-04</p><p>归还时核对延长杆。</p><button type="button" data-id="W-04" aria-pressed="false">标为已点交</button></article>
+<article><small>待点交</small><h2>热风枪</h2><p>工具号 H-09</p><p>归还时核对两个风嘴。</p><button type="button" data-id="H-09" aria-pressed="false">标为已点交</button></article></div>
+<aside><b>值班台</b><output id="total" aria-live="polite"></output></aside></main>
+<script>
+const completed=new Set(JSON.parse(localStorage.getItem('nanqiao-returns')||'[]'));
+function draw(){for(const button of document.querySelectorAll('[data-id]')){const checked=completed.has(button.dataset.id);button.setAttribute('aria-pressed',String(checked));button.textContent=checked?'撤销点交':'标为已点交';button.closest('article').querySelector('small').textContent=checked?'已点交':'待点交';}document.getElementById('total').textContent='已点交 '+completed.size+' / 3';}
+document.addEventListener('click',event=>{const button=event.target.closest('[data-id]');if(!button)return;const id=button.dataset.id;if(completed.has(id))completed.delete(id);else completed.add(id);localStorage.setItem('nanqiao-returns',JSON.stringify([...completed]));draw();});draw();
+</script></html>

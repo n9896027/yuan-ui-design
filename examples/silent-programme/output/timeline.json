@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "scenes": [
+    {
+      "id": "cover",
+      "duration": 3
+    },
+    {
+      "id": "garden",
+      "duration": 3
+    },
+    {
+      "id": "moon",
+      "duration": 3
+    },
+    {
+      "id": "train",
+      "duration": 3
+    }
+  ]
+}

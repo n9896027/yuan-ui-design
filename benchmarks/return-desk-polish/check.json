@@ -1,0 +1,25 @@
+{
+  "chromium": "158.0.8127.37",
+  "trials": {
+    "original": {
+      "afterSave": "已点交 1 / 3",
+      "afterUndo": "已点交 0 / 3",
+      "headingAfterSave": [],
+      "errors": []
+    },
+    "huashu": {
+      "afterSave": "已点交 1 / 3",
+      "afterUndo": "已点交 0 / 3",
+      "headingAfterSave": [],
+      "errors": []
+    },
+    "yuan": {
+      "afterSave": "已点交 1 / 3",
+      "afterUndo": "已点交 0 / 3",
+      "headingAfterSave": [
+        "本班待办 · 03 件"
+      ],
+      "errors": []
+    }
+  }
+}

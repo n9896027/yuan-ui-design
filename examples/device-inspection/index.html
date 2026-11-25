@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="data:,">
+  <title>介面辨認桌 · Raspberry Pi 4 Model B</title>
+  <style>
+    :root { --ink:#17382e; --paper:#fffdf8; --ground:#e7ece3; --line:#b9c8b9; --quiet:#5d7168; --hot:#bc4b2d; --focus:#e18b18; --select:#ddecbd; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--ground); font:16px/1.5 ui-sans-serif,system-ui,-apple-system,"PingFang TC","Noto Sans TC",sans-serif; }
+    button,a { font:inherit; } button { color:inherit; cursor:pointer; } button:focus-visible,a:focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
+    .shell { max-width:1180px; margin:auto; padding:26px 22px 54px; }
+    header { display:flex; justify-content:space-between; gap:24px; align-items:end; padding-bottom:17px; border-bottom:2px solid var(--ink); }
+    .eyebrow,.label { margin:0 0 7px; color:var(--quiet); font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.11em; text-transform:uppercase; }
+    h1 { max-width:760px; margin:0; font-size:clamp(28px,4vw,48px); line-height:1.04; letter-spacing:-.055em; } h1 em { color:var(--hot); font-style:normal; }
+    .purpose { max-width:310px; margin:0; color:var(--quiet); font-size:13px; text-align:right; }
+    .grid { display:grid; grid-template-columns:minmax(0,1.36fr) minmax(290px,.64fr); gap:27px; margin-top:29px; }
+    .stage { background:var(--paper); border:1px solid var(--ink); box-shadow:7px 7px 0 var(--ink); }
+    .stage-head { display:flex; justify-content:space-between; gap:12px; padding:14px 16px; border-bottom:1px solid var(--line); }
+    .stage-head p { margin:0; font-size:13px; } .stage-head span { color:var(--quiet); }
+    figure { position:relative; margin:0; overflow:hidden; background:#d6dbd3; aspect-ratio:1.667/1; }
+    .device-photo { display:block; width:100%; height:100%; object-fit:cover; }.device-photo[hidden] { display:none!important; }
+    .hotspot { position:absolute; z-index:2; display:grid; place-items:center; width:38px; height:38px; border:2px solid white; border-radius:50%; color:#fff; background:var(--hot); box-shadow:0 0 0 2px #73331f; font-weight:800; line-height:1; transform:translate(-50%,-50%); }
+    .hotspot[data-part="power"] { left:23%; top:71%; }.hotspot[data-part="hdmi"] { left:54%; top:71%; }.hotspot[data-part="hdmi2"] { left:83%; top:71%; }
+    .hotspot[aria-pressed="true"] { background:var(--ink); box-shadow:0 0 0 4px var(--select); transform:translate(-50%,-50%) scale(1.08); }.hotspot[hidden] { display:none!important; }
+    figcaption { padding:12px 16px; color:var(--quiet); font-size:12px; }
+    .fallback { display:none; min-height:360px; padding:34px; background:repeating-linear-gradient(-45deg,#e3e8de 0 12px,#f7f8f2 12px 24px); color:var(--ink); }
+    .fallback strong { display:block; max-width:28ch; font-size:22px; line-height:1.2; }.fallback p { max-width:54ch; }
+    .inspect { align-self:start; border:1px solid var(--line); background:var(--paper); }
+    .inspect > header { display:block; padding:18px 18px 13px; border-bottom:1px solid var(--line); }.inspect h2 { margin:0; font-size:20px; line-height:1.2; }.inspect header p:last-child { margin:6px 0 0; color:var(--quiet); font-size:13px; }
+    .detail { padding:17px 18px 15px; }.detail .status { min-height:22px; margin:0 0 13px; color:var(--quiet); font-size:13px; }.detail-card { border-left:4px solid var(--hot); padding-left:12px; }.detail-card h3 { margin:0; font-size:17px; }.detail-card p { margin:6px 0 0; font-size:14px; }.fact { margin:11px 0 0; padding:10px; background:#f0f3ea; font-size:13px; }.fact b { display:block; margin-bottom:2px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+    .crop { position:relative; height:94px; margin-top:14px; overflow:hidden; border:1px solid var(--line); background:#d7ddd2; }.crop img { position:absolute; display:block; width:175%; max-width:none; height:auto; }
+    .part-list { margin:0; padding:0; list-style:none; border-top:1px solid var(--line); }.part-list button { display:flex; width:100%; gap:10px; align-items:flex-start; padding:14px 17px; border:0; border-bottom:1px solid var(--line); background:transparent; text-align:left; }.part-list button:hover { background:#f3f5ee; }.part-list button[aria-pressed="true"] { background:var(--select); }.part-list b { display:block; font-size:14px; }.part-list small { display:block; margin-top:2px; color:var(--quiet); font-size:12px; }.dot { flex:0 0 auto; width:10px; height:10px; margin-top:6px; border-radius:50%; background:var(--hot); }.part-list button[aria-pressed="true"] .dot { background:var(--ink); }
+    .source { margin-top:27px; padding-top:14px; border-top:1px solid var(--line); color:var(--quiet); font-size:12px; }.source p { margin:5px 0; }.source a { color:inherit; text-decoration-thickness:1px; text-underline-offset:2px; }
+    @media (max-width:760px) { .shell { padding:19px 15px 40px; } header { display:block; }.purpose { margin-top:12px; text-align:left; }.grid { display:block; margin-top:21px; }.stage { box-shadow:5px 5px 0 var(--ink); }.inspect { margin-top:25px; }.hotspot { width:34px; height:34px; }.hotspot::after { width:47px; }.fallback { min-height:250px; padding:22px; }.source { margin-top:22px; } }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div><p class="eyebrow">Yuan UI Design / 真實物件辨認</p><h1>從照片辨認 <em>三個前緣介面</em></h1></div>
+      <p class="purpose">給首次接觸 Raspberry Pi 4 Model B 的人：先在真實照片上定位，再以鍵盤或清單核對用途。</p>
+    </header>
+    <div class="grid">
+      <section class="stage" aria-labelledby="photo-title">
+        <div class="stage-head"><p id="photo-title"><b>Raspberry Pi 4 Model B · 2 GB</b><br><span>正面前緣局部；點紅色標記或使用清單</span></p></div>
+        <figure id="figure">
+          <img id="photo" class="device-photo" src="assets/raspberry-pi-4-usb-c-hdmi.jpg" alt="Raspberry Pi 4 Model B 前緣：左側 USB-C 電源孔，右側兩個 micro-HDMI 孔。">
+          <button class="hotspot" type="button" data-part="power" aria-pressed="false" aria-label="辨認 USB-C 電源輸入"><span>1</span></button>
+          <button class="hotspot" type="button" data-part="hdmi" aria-pressed="false" aria-label="辨認第一個 micro-HDMI 視訊輸出"><span>2</span></button>
+          <button class="hotspot" type="button" data-part="hdmi2" aria-pressed="false" aria-label="辨認第二個 micro-HDMI 視訊輸出"><span>3</span></button>
+          <div id="fallback" class="fallback" role="status"><strong>照片未能載入，但核對仍可進行。</strong><p>請使用清單確認本機型的 USB-C 供電與兩個 micro-HDMI 視訊輸出；圖片檔與離線路徑請見 sources.md。</p></div>
+        </figure>
+        <figcaption>照片中的板上絲印可讀到 <b>POWER IN</b>、<b>HDMI0</b> 與 <b>HDMI1</b>；標記是本頁疊加，沒有改寫原圖。</figcaption>
+      </section>
+      <aside class="inspect" aria-labelledby="inspect-title">
+        <header><p class="label">已選部件</p><h2 id="inspect-title">選一個介面開始</h2><p id="detail-summary">點照片標記，或以 Tab 移到清單按 Enter。</p></header>
+        <div class="detail"><p class="status" id="status" aria-live="polite">尚未選擇；所有資料已隨此檔案提供。</p><div class="detail-card"><h3 id="detail-name">前緣核對</h3><p id="detail-text">這張局部真實照片只用於辨認可見介面，不用外觀猜測其他規格。</p><p class="fact"><b>可核對資料</b><span id="detail-fact">官方規格列出 USB-C 5V 供電、兩個 micro-HDMI（最高 4Kp60）。</span></p></div><div id="crop" class="crop" aria-label="目前選定區域的照片局部"><img id="crop-image" src="assets/raspberry-pi-4-usb-c-hdmi.jpg" alt=""></div></div>
+        <ul class="part-list" aria-label="可用鍵盤選擇的前緣介面">
+          <li><button type="button" data-part="power" aria-pressed="false"><span class="dot"></span><span><b>1 · USB-C 電源輸入</b><small>5V DC，最低 3A；不是影像輸出。</small></span></button></li>
+          <li><button type="button" data-part="hdmi" aria-pressed="false"><span class="dot"></span><span><b>2 · micro-HDMI 0</b><small>兩個 micro-HDMI 之一；可接顯示器。</small></span></button></li>
+          <li><button type="button" data-part="hdmi2" aria-pressed="false"><span class="dot"></span><span><b>3 · micro-HDMI 1</b><small>第二個 micro-HDMI；與 HDMI 0 並列。</small></span></button></li>
+        </ul>
+      </aside>
+    </div>
+    <footer class="source"><p><b>離線說明：</b>無網路請求、無外部字型或函式庫。照片與文字資料已本地保存；若圖片遺失會顯示可用的文字替代。</p><p><b>圖片：</b>〈Raspberry Pi 4, 2 GB RAM version 4 (cropped) USB-C HDMI.jpg〉，Suyash.dwivedi，<a href="https://commons.wikimedia.org/wiki/File:Raspberry_Pi_4,_2_GB_RAM_version_4_(cropped)_USB-C_HDMI.jpg">Wikimedia Commons</a>，CC BY-SA 4.0。原作者裁切的圖檔按原許可本地收錄；本例只加上非破壞性的 HTML 標記與說明。</p><p><b>部件真值：</b><a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/specifications/">Raspberry Pi 官方規格</a>（USB-C 5V DC 最低 3A；2 × micro-HDMI，最高 4Kp60）。完整來源與變更署名見 <a href="sources.md">sources.md</a>。</p></footer>
+  </main>
+  <script>
+    (() => {
+      const parts = {
+        power: { title:'USB-C 電源輸入', text:'照片左側、板上標示 POWER IN 的接口。它供應 5V DC；不能把它當成影像輸出。', fact:'官方規格：5V DC via USB-C connector，最低 3A。' },
+        hdmi: { title:'micro-HDMI 0', text:'照片中央、板上標示 HDMI0 的第一個 micro-HDMI。需使用 micro-HDMI 轉接線。', fact:'官方規格：2 × micro-HDMI，最高支援 4Kp60。' },
+        hdmi2: { title:'micro-HDMI 1', text:'照片右側、板上標示 HDMI1 的第二個 micro-HDMI，與 HDMI0 成對排列。', fact:'官方規格：2 × micro-HDMI，最高支援 4Kp60。' }
+      };
+      const photo = document.querySelector('#photo'), fallback = document.querySelector('#fallback'), crop = document.querySelector('#crop'), cropImage = document.querySelector('#crop-image');
+      const title = document.querySelector('#inspect-title'), name = document.querySelector('#detail-name'), text = document.querySelector('#detail-text'), fact = document.querySelector('#detail-fact'), status = document.querySelector('#status');
+      const controls = [...document.querySelectorAll('[data-part]')];
+      const points = { power:{x:.23,y:.71}, hdmi:{x:.54,y:.71}, hdmi2:{x:.83,y:.71} };
+      const positionCrop = (key) => { const point = points[key]; if (!point || !cropImage.naturalWidth) return; const scale = 1.75, imageRatio = cropImage.naturalHeight / cropImage.naturalWidth; cropImage.style.left = `${50 - point.x * scale * 100}%`; cropImage.style.top = `${50 - point.y * scale * imageRatio * crop.clientWidth / crop.clientHeight * 100}%`; };
+      const choose = (key) => { const part = parts[key]; if (!part) return; controls.forEach((item) => item.setAttribute('aria-pressed', String(item.dataset.part === key))); title.textContent = part.title; name.textContent = part.title; text.textContent = part.text; fact.textContent = part.fact; positionCrop(key); status.textContent = photo.hidden ? `已選擇：${part.title}。照片不可用，請以文字資料核對。` : `已選擇：${part.title}。可在原始照片與局部之間核對位置。`; };
+      controls.forEach((control) => control.addEventListener('click', () => choose(control.dataset.part)));
+      const showFallback = () => { photo.hidden = true; cropImage.hidden = true; document.querySelectorAll('.hotspot').forEach((item) => item.hidden = true); fallback.style.display = 'block'; crop.style.display = 'none'; status.textContent = '圖片無法使用；已切換到文字核對路徑。'; };
+      photo.addEventListener('error', showFallback); cropImage.addEventListener('error', showFallback); window.addEventListener('resize', () => { const active = controls.find((item) => item.getAttribute('aria-pressed') === 'true'); if (active) positionCrop(active.dataset.part); });
+      if (new URLSearchParams(location.search).has('missing-image') || (photo.complete && !photo.naturalWidth) || (cropImage.complete && !cropImage.naturalWidth)) showFallback();
+    })();
+  </script>
+</body>
+</html>

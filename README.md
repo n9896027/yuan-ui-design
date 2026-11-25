@@ -8,7 +8,7 @@
 
 ## 安装到 Codex
 
-将下面一行发给 Codex。链接固定在可安装的 **2.4.0** 版本。
+下面的安装链接固定到公开的 **2.4.0**。本开发分支提供 **2.5.0-dev.5**，下载当前分支后可按下方步骤手动安装。
 
 ```text
 请用 $skill-installer 安装 https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1/skills/yuan-ui-design
@@ -23,13 +23,40 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 <details>
 <summary>手动安装或检查已安装版本</summary>
 
-下载含技能的分支或[固定版本](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1)，将其中的 `skills/yuan-ui-design` 文件夹复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。打开已安装目录里的 `SKILL.md`，其 `metadata.version` 应为 `2.4.0`。已有定制版本时，先比较差异，再决定是否替换。
+下载含技能的分支或[固定版本](https://github.com/n9896027/yuan-ui-design/tree/4aa790d86e4c5e28df10ba43a793c2081aa15bc1)，将其中的 `skills/yuan-ui-design` 文件夹复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。打开已安装目录里的 `SKILL.md` 查看 `metadata.version`。已有定制版本时，先比较差异，再决定是否替换。
 
 </details>
 
+## 试用 2.5 开发版
+
+克隆或下载整个开发版本后，可在本机打开下面的页面。保留 HTML 旁的资源目录。OpenClaw 已在隔离工作区通过离线发现读取技能名称和说明，完整设计任务尚待跨宿主复验。
+
+| 想验证的能力 | 可以操作的样例 |
+| --- | --- |
+| 配图是否真能认出接口 | 打开[实物辨认页](examples/device-inspection/index.html)，分别找出 USB-C、HDMI 0 和 HDMI 1。选中标记后核对局部放大图。 |
+| 比较依据和判断能否同屏 | 打开[潮尺读数复核](benchmarks/tide-reading/revision/index.html)，选中 07:25，找出 56 cm 和 65 cm 的差异，标为需回查后刷新。[两份首稿与修订对照](benchmarks/tide-reading/README.md) |
+| 3D 配置是否可撤回 | 打开[接口配置器](examples/port-configurator/index.html)，旋转机壳示意、尝试冲突配件、撤回，再保存并刷新。 |
+| 改完一段字幕会不会丢掉另一段 | 打开[字幕编辑器和反例](skills/yuan-ui-design/evals/subtitle-persistence/README.md)，复现保存旧值与迟到回执。 |
+| 一个场次能否同步出不同格式 | 查看[节目页](examples/silent-programme/output/programme.html)、[可编辑演示稿](examples/silent-programme/output/programme.pptx)和[微信小程序工程](examples/silent-programme/wechat/README.md)。[整套成品与重建说明](examples/silent-programme/README.md)含三张真实剧照与宣传短片。 |
+| 原生 App 怎样保存巡检记录 | 打开 [SwiftUI 巡检工程](examples/native-inspection/README.md)。iOS SDK 已编译出 App 包，真机相机与后台恢复待验。 |
+
+## 配图构图实测
+
+[查看《月球旅行记》社交图的实际裁切变化](examples/silent-programme/moon-comparison.jpg)，或[并排查看 Huashu 首稿 A、Yuan 首稿 B 和 Yuan 修订 C](benchmarks/portrait-composition/compare.html)。C 在彩色肖像旁展示原图局部，手机首屏可直接揭晓姓名。[肖像比较与匿名评审](benchmarks/portrait-composition/README.md) · [同一张工具归还页的去 AI 味对照](benchmarks/return-desk-polish/README.md)
+
+## 用 Unslop 精修已有界面
+
+在有源码的项目中试一句：「$yuan-ui-design 用 Unslop 检查工单编辑页。重点看手机上的保存失败，保留现有品牌和保存流程，只修能指出的问题。」它会按屏幕证据选择保留、局部修正或整屏调整，并用相同内容和状态复核。
+
+[看同一张工单在桌面、手机和保存失败时的前后对照](benchmarks/unslop-repair-desk/review.html)。
+
+只有网址时，也可以让 Yuan 保存原网页、生成可编辑副本并在离线浏览器里复核。先看字体、图片和动态画面是否保留下来，再做视觉修改。[网址改稿工具的用法](skills/yuan-ui-design/references/unslop.md) · [CERN 页面与离线回归记录](benchmarks/url-baseline/README.md)
+
+改编自 Damir Sokolovsky 的 Unslop，遵循 CC BY 4.0。[技能用法与署名](skills/yuan-ui-design/references/unslop.md) · [原项目](https://github.com/heydamir/unslop)
+
 ## 试用维修台
 
-[打开维修台演示文件](examples/repair-desk/index.html)。在 GitHub 文件页选择 **Download raw file**，用浏览器打开下载的 HTML。设备和工单为样例数据。
+[打开维修台演示文件](examples/repair-desk/index.html)。在 GitHub 文件页选择 **Download raw file**，用浏览器打开下载的 HTML。设备和工单为样例数据。页面底部的「可复现状态」可直接打开长设备名、保存中、失败留稿与保存后重开。
 
 1. 改写工单 W-02 的「检修备注」，勾选「模拟下一次保存失败」，点「保存更改」。
 2. 页面会提示保存失败。核对刚才输入的文字是否仍在编辑框。
@@ -68,12 +95,16 @@ $yuan-ui-design 检查工单编辑页。手机上要能看清设备全名、编�
 
 ## 验证与来源
 
-在仓库根目录运行以下命令，可检查文件链接、样例截图的完整性，以及两项评测工具自身的行为。
+在仓库根目录运行以下命令，可检查文件链接、样例截图的完整性，及配图来源，并运行编辑器、照片和 3D 的浏览器回归。
 
 ```sh
 node scripts/check-repository.mjs
 node skills/yuan-ui-design/scripts/validate-ui-evidence.mjs --self-test
 node skills/yuan-ui-design/scripts/ui-artifacts.mjs --self-test
+python3 examples/silent-programme/check.py
+npm ci
+npx --no-install playwright install chromium
+npm run test:editor && npm run test:transfer && npm run test:photo && npm run test:3d
 ```
 
-[证据如何记录](skills/yuan-ui-design/references/verification.md) · [设计方法与规范来源](skills/yuan-ui-design/references/source-manifest.md) · [Huashu Design 的方法借鉴与上游许可](skills/yuan-ui-design/references/huashu-adaptation.md)
+[展签首稿与修正对比](benchmarks/exhibit-transfer/README.md) · [原生巡检工程与验证范围](examples/native-inspection/README.md) · [证据如何记录](skills/yuan-ui-design/references/verification.md) · [设计方法与规范来源](skills/yuan-ui-design/references/source-manifest.md) · [Huashu Design 的方法借鉴与上游许可](skills/yuan-ui-design/references/huashu-adaptation.md)

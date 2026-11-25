@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9e5dc">
+  <title>读一张肖像｜北岸图书馆</title>
+  <style>
+    :root { --paper:#e9e5dc; --ink:#17293a; --blue:#23485d; --red:#bd4f43; --line:rgba(23,41,58,.32); --pale:#f7f5ef; }
+    * { box-sizing:border-box; }
+    html { background:var(--paper); color:var(--ink); font-family:ui-serif, "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif; }
+    body { margin:0; }
+    button { font:inherit; }
+    .mast { width:min(1180px,calc(100% - 64px)); margin:0 auto; padding:20px 0 18px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); font-family:ui-sans-serif, system-ui, sans-serif; font-size:12px; letter-spacing:.14em; }
+    .mast strong { font-size:13px; letter-spacing:.08em; }
+    main { width:min(1180px,calc(100% - 64px)); margin:0 auto; }
+    .event { min-height:calc(100vh - 58px); display:grid; grid-template-columns:minmax(300px, .86fr) minmax(390px,1.14fr); gap:clamp(40px,7vw,110px); align-items:center; padding:42px 0 52px; }
+    .intro { align-self:center; }
+    .eyebrow, .caption, .number, .facts dt { font-family:ui-sans-serif, system-ui, sans-serif; font-size:11px; letter-spacing:.15em; text-transform:uppercase; }
+    .eyebrow { color:var(--red); margin:0 0 20px; font-weight:700; }
+    h1 { margin:0; font-size:clamp(52px,7.5vw,102px); letter-spacing:-.08em; line-height:.92; font-weight:650; }
+    .dek { max-width:27em; margin:30px 0 32px; font-size:clamp(18px,1.65vw,23px); line-height:1.65; }
+    .facts { border-top:1px solid var(--ink); margin:0; }
+    .facts div { display:grid; grid-template-columns:84px 1fr; gap:15px; padding:12px 0 10px; border-bottom:1px solid var(--line); }
+    .facts dt { color:#56636c; padding-top:3px; }
+    .facts dd { margin:0; font-size:17px; line-height:1.45; }
+    .observe { margin-top:27px; display:flex; align-items:center; gap:14px; font-family:ui-sans-serif, system-ui, sans-serif; font-size:14px; }
+    .observe i { width:10px; height:10px; display:inline-block; background:var(--red); border-radius:50%; }
+    .portrait-wrap { position:relative; width:min(100%,590px); justify-self:end; }
+    .portrait-wrap::before { content:""; position:absolute; z-index:-1; inset:20px -20px -20px 20px; border:1px solid var(--ink); }
+    .portrait { display:block; width:100%; aspect-ratio:4/4.68; object-fit:cover; object-position:center; filter:saturate(.77) contrast(1.04); }
+    .tag { position:absolute; right:-12px; top:25px; background:var(--red); color:#fff; padding:9px 12px 8px; writing-mode:vertical-rl; font-family:ui-sans-serif, system-ui, sans-serif; font-size:10px; letter-spacing:.14em; }
+    .caption { margin:13px 0 0; color:#59636a; line-height:1.5; text-transform:none; letter-spacing:.07em; }
+    .reveal { position:absolute; left:-31px; bottom:57px; color:var(--ink); background:var(--pale); border:1px solid var(--ink); padding:14px 18px; text-align:left; cursor:pointer; box-shadow:5px 5px 0 var(--ink); min-height:54px; }
+    .reveal .small { display:block; font-family:ui-sans-serif, system-ui, sans-serif; font-size:10px; letter-spacing:.12em; margin-bottom:2px; }
+    .reveal .name { display:block; font-size:22px; line-height:1.1; }
+    .reveal[data-open="false"] .name { color:transparent; text-shadow:0 0 8px rgba(23,41,58,.75); user-select:none; }
+    .reveal:focus-visible { outline:3px solid var(--red); outline-offset:4px; }
+    .lower { border-top:1px solid var(--line); padding:28px 0 80px; display:grid; grid-template-columns:1fr 1fr; gap:35px; font-size:16px; line-height:1.8; }
+    .lower p { margin:0; max-width:31em; }
+    .poster { display:none; }
+    @media (max-width:700px) { .mast, main { width:min(100% - 36px,560px); }.mast { padding:15px 0; font-size:10px; }.mast strong { font-size:11px; }.event { min-height:0; grid-template-columns:1fr; gap:35px; padding:34px 0 46px; }.intro { display:contents; }.eyebrow { order:-2; margin:0 0 -25px; }.portrait-wrap { order:-1; width:calc(100% - 14px); justify-self:start; margin-left:0; }.portrait-wrap::before { inset:14px -14px -14px 14px; }.tag { top:15px; right:-10px; }.reveal { left:11px; bottom:39px; }.caption { font-size:9px; padding-right:12px; } h1 { font-size:clamp(55px,17vw,80px); }.dek { margin:22px 0 25px; font-size:18px; }.facts dd { font-size:16px; }.lower { grid-template-columns:1fr; gap:15px; padding-bottom:55px; } }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition:none !important; } }
+    html.poster-mode { background:#e9e5dc; }
+    html.poster-mode body { display:grid; place-items:center; min-height:100vh; }
+    html.poster-mode .page { display:none; }
+    html.poster-mode .poster { display:block; }
+    @media print { .page { display:none; } .poster { display:block; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="mast"><strong>北岸图书馆</strong><span>馆藏活动 · 第 04 期</span></header>
+    <main>
+      <section class="event" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow">馆藏活动 / portrait reading</p>
+          <h1 id="title">读一张<br>肖像</h1>
+          <p class="dek">先别急着读名字。停下来，看一看她的眼镜、帽徽，和胸前一排小小的勋表。</p>
+          <dl class="facts"><div><dt>日期</dt><dd>12 月 12 日</dd></div><div><dt>地点</dt><dd>北岸图书馆 · 二楼阅览室</dd></div><div><dt>入场</dt><dd>自由入场</dd></div></dl>
+          <p class="observe"><i aria-hidden="true"></i>从三个细节开始读</p>
+        </div>
+        <figure class="portrait-wrap">
+          <img class="portrait" src="portrait.jpg" alt="身着深色海军制服、戴有帽徽并佩戴眼镜与勋表的格蕾丝·霍珀肖像">
+          <span class="tag">肖像 · 01</span>
+          <button class="reveal" type="button" aria-expanded="false" data-open="false"><span class="small">观察之后，读她的名字</span><span class="name">Grace Hopper</span></button>
+          <figcaption class="caption">照片：美国海军 · James S. Davis</figcaption>
+        </figure>
+      </section>
+      <section class="lower" aria-label="活动引导"><p>肖像不是答案的封面。它保存着姿态、选择与时间留下的线索；在阅览室里，我们从一张照片开始，练习缓慢地看。</p><p>无需预约。欢迎带着一个你注意到的细节前来。</p></section>
+    </main>
+  </div>
+  <section class="poster" aria-label="读一张肖像活动海报">
+    <style>
+      .poster{width:800px;height:1000px;position:relative;overflow:hidden;background:#e9e5dc;color:#17293a;font-family:ui-serif,"Songti SC","STSong",serif}.poster .p-top{position:absolute;top:46px;left:54px;right:54px;display:flex;justify-content:space-between;border-bottom:1px solid #17293a;padding-bottom:15px;font:12px ui-sans-serif,system-ui;letter-spacing:.14em}.poster h2{position:absolute;z-index:2;left:54px;top:110px;margin:0;font-size:94px;line-height:.86;letter-spacing:-.09em}.poster .p-date{position:absolute;z-index:2;left:57px;top:312px;background:#bd4f43;color:#fff;padding:12px 14px 10px;font:700 13px ui-sans-serif,system-ui;letter-spacing:.13em}.poster .p-photo{position:absolute;right:54px;top:107px;width:380px;height:527px;object-fit:cover;object-position:center;filter:saturate(.77) contrast(1.04)}.poster .p-frame{position:absolute;right:34px;top:127px;width:380px;height:527px;border:1px solid #17293a}.poster .p-note{position:absolute;left:57px;top:423px;width:247px;font-size:19px;line-height:1.65}.poster .p-name{position:absolute;left:54px;bottom:161px;font-size:53px;line-height:.95;letter-spacing:-.06em}.poster .p-name small{display:block;margin-bottom:7px;font:11px ui-sans-serif,system-ui;letter-spacing:.13em}.poster .p-info{position:absolute;bottom:47px;left:54px;right:54px;border-top:1px solid #17293a;padding-top:14px;display:grid;grid-template-columns:1.5fr 1fr;font:14px/1.55 ui-sans-serif,system-ui}.poster .p-credit{position:absolute;right:54px;top:650px;font:10px/1.5 ui-sans-serif,system-ui;letter-spacing:.06em;color:#56636a;text-align:right}.poster .p-dot{position:absolute;left:55px;bottom:293px;width:11px;height:11px;border-radius:50%;background:#bd4f43}
+    </style>
+    <div class="p-top"><b>北岸图书馆</b><span>馆藏活动 · 第 04 期</span></div><h2>读一张<br>肖像</h2><span class="p-date">12 月 12 日</span><img class="p-photo" src="portrait.jpg" alt=""><i class="p-frame"></i><p class="p-note">先看眼镜、帽徽和胸前勋表。让细节带你，走到一个名字之前。</p><i class="p-dot"></i><div class="p-name"><small>本期人物</small>格蕾丝·霍珀<br><em>Grace Hopper</em></div><p class="p-credit">照片：美国海军<br>James S. Davis</p><div class="p-info"><span>北岸图书馆 · 二楼阅览室</span><span>自由入场</span></div>
+  </section>
+  <script>
+    if (new URLSearchParams(location.search).get('format') === 'poster') document.documentElement.classList.add('poster-mode');
+    const reveal = document.querySelector('.reveal');
+    reveal?.addEventListener('click', () => { const open = reveal.dataset.open === 'true'; reveal.dataset.open = String(!open); reveal.setAttribute('aria-expanded', String(!open)); });
+  </script>
+</body>
+</html>

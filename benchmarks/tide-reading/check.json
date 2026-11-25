@@ -1,0 +1,120 @@
+{
+  "chromium": "158.0.8127.37",
+  "reports": [
+    {
+      "variant": "tide-a",
+      "desktop": {
+        "pass": true,
+        "issues": [],
+        "counts": {
+          "afterMatch": {
+            "done": 1,
+            "check": 0
+          },
+          "afterReload": {
+            "done": 1,
+            "check": 0
+          },
+          "afterReview": {
+            "done": 2,
+            "check": 1
+          },
+          "afterChange": {
+            "done": 2,
+            "check": 0
+          }
+        },
+        "blockedWriteNotice": "07:25 已标为需回查。",
+        "detectedBlockedWrite": false
+      },
+      "mobile": {
+        "pass": true,
+        "issues": [],
+        "visibleOnFirstScreen": {
+          "#writtenValue": true,
+          "#enteredValue": true,
+          "#agreeBtn": false,
+          "#reviewBtn": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "variant": "tide-b",
+      "desktop": {
+        "pass": true,
+        "issues": [],
+        "counts": {
+          "afterMatch": {
+            "done": 1,
+            "check": 0
+          },
+          "afterReload": {
+            "done": 1,
+            "check": 0
+          },
+          "afterReview": {
+            "done": 2,
+            "check": 1
+          },
+          "afterChange": {
+            "done": 2,
+            "check": 0
+          }
+        },
+        "blockedWriteNotice": "已标为需回查",
+        "detectedBlockedWrite": false
+      },
+      "mobile": {
+        "pass": true,
+        "issues": [],
+        "visibleOnFirstScreen": {
+          "#handValue": true,
+          "#entryValue": true,
+          "[data-decision=\"match\"]": false,
+          "[data-decision=\"check\"]": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "variant": "revision",
+      "desktop": {
+        "pass": true,
+        "issues": [],
+        "counts": {
+          "afterMatch": {
+            "done": 1,
+            "check": 0
+          },
+          "afterReload": {
+            "done": 1,
+            "check": 0
+          },
+          "afterReview": {
+            "done": 2,
+            "check": 1
+          },
+          "afterChange": {
+            "done": 2,
+            "check": 0
+          }
+        },
+        "blockedWriteNotice": "已标为需回查。改动尚未保存，刷新会恢复上次保存的判断。",
+        "detectedBlockedWrite": true,
+        "retryAfterBlockedWrite": true
+      },
+      "mobile": {
+        "pass": true,
+        "issues": [],
+        "visibleOnFirstScreen": {
+          "#handValue": true,
+          "#entryValue": true,
+          "[data-decision=\"match\"]": true,
+          "[data-decision=\"check\"]": true
+        }
+      },
+      "pass": true
+    }
+  ]
+}

@@ -54,6 +54,7 @@
     .switch label { margin:0; font-size:13px; font-weight:700; }
     .switch input { inline-size:16px; block-size:16px; accent-color:var(--signal); }
     .reset { color:var(--muted); border-color:#82958a; }
+    .scenario-action { margin-top:10px; }
     .footnote { margin-top:24px; color:var(--muted); font-size:12px; }
     @media (max-width:780px) {
       .shell { padding:20px 16px 42px; }
@@ -128,12 +129,35 @@
       <p>这个开关只用于演示失败处理：失败时不会写入已保存内容，当前编辑会保留，可直接重试。</p>
       <div class="switch"><input id="fail-next" type="checkbox"><label for="fail-next">模拟下一次保存失败</label></div>
       <button id="reset" class="button reset" type="button">重置本地示例</button>
+      <p class="scenario-links">可复现状态：<a href="?state=long-name">长设备名</a> · <a href="?state=saving">保存中</a> · <a href="?state=failure">保存失败</a> · <a href="?state=saved">已保存后重开</a></p>
+      <button id="finish-save" class="button scenario-action" type="button" hidden>完成本次保存</button>
     </aside>
     <p class="footnote">无网络请求、无上传、无真实维修数据。此页面可从文件系统直接打开。</p>
   </main>
   <script>
     (() => {
-      const key = 'yuan-ui-repair-desk-demo-v1';
+      const normalKey = 'yuan-ui-repair-desk-demo-v1';
+      const scenario = new URLSearchParams(location.search).get('state');
+      const scenarios = {
+        'long-name': {
+          device: '东岸潮间带连续观测站二号防腐机柜内盐度、溶氧、浊度与叶绿素联合采集及远程校准设备',
+          note: '显示完整设备名称，确认桌面与窄屏编辑器都能保留保存操作。'
+        },
+        saving: {
+          device: '东岸观测站二号防腐机柜内盐度与溶氧联合采集设备',
+          note: '正在写入本机的示例记录。'
+        },
+        failure: {
+          device: '东岸观测站二号防腐机柜内盐度与溶氧联合采集设备',
+          note: '保存失败后，这条草稿必须留在输入框中。'
+        },
+        saved: {
+          device: '东岸观测站二号防腐机柜内盐度与溶氧联合采集设备',
+          note: '这条记录已经保存，并在重新打开后读回。'
+        }
+      };
+      const hasScenario = Object.prototype.hasOwnProperty.call(scenarios, scenario);
+      const key = hasScenario ? `yuan-ui-repair-desk-demo-scenario-${scenario}-v1` : normalKey;
       const defaults = {
         device: '东岸观测站二号防腐机柜内盐度与溶氧联合采集设备',
         note: '暴雨后间歇离线；先核对供电端子，再检查盐雾侵蚀痕迹。'
@@ -145,24 +169,49 @@
       const status = document.querySelector('#status');
       const failNext = document.querySelector('#fail-next');
       const reset = document.querySelector('#reset');
+      const finishSave = document.querySelector('#finish-save');
       const queueDevice = document.querySelector('#queue-device-w02');
+      let pendingSave = null;
+      let holdNextSave = false;
+      let scenarioBootstrap = false;
       const setStatus = (state, text) => { status.dataset.state = state; status.textContent = text; };
       const read = () => {
         try { return JSON.parse(localStorage.getItem(key) || 'null'); }
         catch { return null; }
       };
+      const validRecord = value => value && typeof value.device === 'string' && typeof value.note === 'string';
+      const write = record => localStorage.setItem(key, JSON.stringify({ ...record, savedAt: new Date().toISOString() }));
       const restore = () => {
         const saved = read();
-        const record = saved && typeof saved.device === 'string' && typeof saved.note === 'string' ? saved : defaults;
+        const record = validRecord(saved) ? saved : defaults;
         device.value = record.device;
         note.value = record.note;
         queueDevice.textContent = record.device;
-        setStatus(saved ? 'saved' : 'idle', saved ? '已载入本机保存内容' : '尚未修改');
+        setStatus(validRecord(saved) ? 'saved' : 'idle', validRecord(saved) ? '已载入本机保存内容' : '尚未修改');
       };
       form.addEventListener('input', () => setStatus('dirty', '有未保存更改'));
+      const settleSave = () => {
+        if (!pendingSave) return;
+        const { record, reloadAfterSave } = pendingSave;
+        pendingSave = null;
+        try {
+          write(record);
+          queueDevice.textContent = record.device;
+          const currentChanged = device.value !== record.device || note.value !== record.note;
+          setStatus(currentChanged ? 'dirty' : 'saved', currentChanged ? '较早的内容已保存；当前编辑仍未保存' : '已保存到本机；刷新后仍会保留');
+          if (reloadAfterSave) location.reload();
+        } catch {
+          setStatus('error', '本机储存不可用：编辑内容仍在这里，可直接重试');
+        } finally {
+          save.disabled = false;
+          finishSave.hidden = true;
+        }
+      };
+      finishSave.addEventListener('click', settleSave);
       form.addEventListener('submit', (event) => {
         event.preventDefault();
         if (save.disabled || !form.reportValidity()) return;
+        const record = { device: device.value, note: note.value };
         save.disabled = true;
         setStatus('saving', '正在保存到本机…');
         if (failNext.checked) {
@@ -171,16 +220,19 @@
           setStatus('error', '保存失败：编辑内容仍在这里，可直接重试');
           return;
         }
-        try {
-          localStorage.setItem(key, JSON.stringify({ device: device.value, note: note.value, savedAt: new Date().toISOString() }));
-          queueDevice.textContent = device.value;
-          setStatus('saved', '已保存到本机；刷新后仍会保留');
-        } catch {
-          setStatus('error', '本机储存不可用：编辑内容仍在这里，可直接重试');
+        pendingSave = { record, reloadAfterSave: scenarioBootstrap && scenario === 'saved' };
+        scenarioBootstrap = false;
+        if (holdNextSave) {
+          holdNextSave = false;
+          finishSave.hidden = false;
+        } else {
+          settleSave();
         }
-        save.disabled = false;
       });
       reset.addEventListener('click', () => {
+        pendingSave = null;
+        save.disabled = false;
+        finishSave.hidden = true;
         localStorage.removeItem(key);
         failNext.checked = false;
         device.value = defaults.device;
@@ -188,7 +240,36 @@
         queueDevice.textContent = defaults.device;
         setStatus('idle', '已重置本地示例');
       });
+      if (hasScenario && !validRecord(read())) {
+        write(scenarios[scenario]);
+        scenarioBootstrap = scenario !== 'long-name';
+      }
       restore();
+      if (scenarioBootstrap) {
+        queueMicrotask(() => {
+          if (scenario === 'saving') {
+            note.value = '正在保存的草稿；后续输入不会覆盖这次提交。';
+            holdNextSave = true;
+          } else if (scenario === 'failure') {
+            note.value = '保存失败后，这条草稿仍然在这里，可直接重试。';
+            failNext.checked = true;
+          } else if (scenario === 'saved') {
+            note.value = '这条记录经由同一保存操作写入，并在重新打开后读回。';
+          }
+          form.requestSubmit();
+        });
+      }
+      document.querySelectorAll('.scenario-links a').forEach(link => {
+        link.addEventListener('click', event => {
+          event.preventDefault();
+          const target = new URL(link.href);
+          const targetState = target.searchParams.get('state');
+          if (Object.prototype.hasOwnProperty.call(scenarios, targetState)) {
+            localStorage.removeItem(`yuan-ui-repair-desk-demo-scenario-${targetState}-v1`);
+          }
+          location.assign(target.href);
+        });
+      });
     })();
   </script>
 </body>

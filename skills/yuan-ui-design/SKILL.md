@@ -1,13 +1,13 @@
 ---
 name: yuan-ui-design
-description: 设计、实现或审计有辨识度且真实可操作的产品 UI。适用于网站与 Web App、原生移动及桌面 App、后台与编辑器、AI/agent 界面、设计系统、互动教学及产品 3D。根据使用场景设计视觉与操作，在目标宿主验证。纯图片或模型资产制作、纯后端和商业品牌复刻不在范围内。
+description: 设计、实现或审计产品 UI，可按 Unslop 方法为已有界面去除模板感、精修视觉。适用于网站与 Web App、原生移动及桌面 App、后台与编辑器、AI/agent 界面、设计系统、互动教学及产品 3D，也支持基于同一份内容交付网页、演示稿与社交图文。根据使用场景设计视觉与操作，在目标宿主验证。纯图片或模型资产制作、纯后端和商业品牌复刻不在范围内。
 metadata:
-  version: "2.4.0"
-  last-reviewed: "2026-11-24"
+  version: "2.5.0-dev.5"
+  last-reviewed: "2026-11-25"
   short-description: Build distinct, truthful, accessible product UI
 ---
 
-# Yuan-UI-design v2.4.0
+# Yuan-UI-design v2.5.0-dev.5
 
 Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自当前产品的任务、内容与设计系统。目标不是“做得像某个 AI 产品”，而是把真实产品任务变成有辨识度、可操作、可验证的界面。
 
@@ -27,9 +27,12 @@ Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自�
 不要一次加载所有参考。遇到相应任务时完整读取：
 
 - 目标宿主影响导航、输入、系统能力、生命周期或验收时，读 [references/platform-surfaces.md](references/platform-surfaces.md)。同为网页，阅读型网站与长时间编辑的 Web App 可有不同结构。普通文案或配色修正可直接沿用当前平台。
-- 有按钮、表单、异步提交、持久状态、重试或主任务流：读 [references/interaction-truth.md](references/interaction-truth.md)。
+- 有按钮、表单、异步提交、持久状态、重试或主任务流：读 [交互与命名状态](references/interaction-truth.md)。需要同时重看画面和验证操作时，为同一份实际表单提供可复现的状态入口。
 - 改造已有仓库或连接现有组件、回调与状态：读 [references/repository-integration.md](references/repository-integration.md)；新原型与纯规格不加载。
-- 从截图/竞品提炼风格，或做视觉系统、后台、落地页、编辑器：读 [references/visual-quality.md](references/visual-quality.md)。
+- 从截图或竞品提炼风格，或设计后台、落地页、编辑器的视觉系统时，读 [references/visual-quality.md](references/visual-quality.md)。
+- 用户要求 Unslop、去 AI 味或修整已有屏幕的模板感时，读 [Unslop 视觉精修](references/unslop.md)。若只给网址，先对照同尺寸原屏和离线副本，确认能复现后再改稿。
+- 用户需要凭图辨认实物、挑选照片，或为多张插画保持一致的美术方向时，读 [配图与选图](references/image-direction.md)。先明确读者要凭图找到、辨认或比较什么，在目标视口试做这个动作，再安排解释、揭晓或提交。
+- 同一份内容要出网页、PPTX、印刷 PDF、社交图或影像时，读 [跨媒介交付](references/media-delivery.md)。锁定内容来源，从改一次场次开始验证所有成品。
 - 有 AI 生成、工具执行、长任务、用户接管或中断恢复：读 [references/agentic-ui.md](references/agentic-ui.md)。普通页面不加载。
 - 运行时模型动态组合界面，或要选择 A2UI、AG-UI、MCP Apps 接入方案：再读 [references/generative-ui.md](references/generative-ui.md)。
 - Web 或混合应用的网页部分实现或正式声称无障碍、响应式或性能结果：读 [references/accessibility-performance.md](references/accessibility-performance.md)。
@@ -79,6 +82,8 @@ Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自�
 ### 4. 状态完整门
 
 只实现任务实际需要的状态，但不要遗漏关键边界：default、focus、active、loading、empty、success、error/recovery、disabled/locked，以及适用时的 offline、stale、partial、replay。预览态与已提交态必须可辨；失败不能伪装成功。
+
+改已有编辑器时，用一条预先存有内容的记录从正常入口打开，原样保存、重开并逐字段对照；再实际将一个允许清空的字段清空，验证它仍可保存为空。若存在异步回执，检验迟到的结果是否覆盖另一对象或更新的输入。
 
 ### 5. 输入等价门
 
@@ -133,6 +138,8 @@ Yuan-UI-design 学习可公开复用的产品设计方法，视觉方向来自�
 - 组件语义、密度和状态，而不是孤立样式；
 - 真实内容长度、语言和数据形态；
 - 响应式重排规则，不只是断点数字。
+
+首稿先用真实内容排出一次「找到对象 → 看依据 → 做判断或操作」。在目标视口从页面入口走一遍，确认能在需要作决定的地方看全依据；涉及比较、匹配或空间定位时，按 [视觉方法](references/visual-quality.md#用内容决定首稿) 选择结构。
 
 已有 tokens 时优先扩展。需要跨工具交换时，可采用带 `$type` 和 `$value` 的 DTCG token 格式；不要为了格式迁移破坏现有构建。
 

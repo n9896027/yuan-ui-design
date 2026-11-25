@@ -1,0 +1,147 @@
+{
+  "chromium": "158.0.8127.37",
+  "candidates": {
+    "A": {
+      "desktop": {
+        "pageWidth": 1280,
+        "pageHeight": 1356,
+        "documentText": "北岸图书馆 Northshore Library 本期活动 01 · 眼镜 02 · 帽徽 03 · 勋表 照片：美国海军 · James S. Davis 12·12 馆藏活动 / PORTRAIT READING 读一张 肖像 本期人物：Grace Hopper / 格蕾丝·霍珀 暂缓辨认姓名。先把目光停在她的眼镜、帽徽与胸前勋表；它们各自留下了一段怎样的工作与时间？ 日期 12 月 12 日 地点 北岸图书馆 · 二楼阅览室 入场 自由入场 带着问题来，也可以只带着好奇心来。 HOW TO LOOK 让一张脸先于一个名字开口。 人物肖像不只记录容貌。衣饰的细节、姿态的方向、被镜头留下的微小证据，都在等候一次缓慢的阅读。 观察之后，再认识她。 在阅览室里，我们从照片的局部开始，一起练习看见照片没有写出的东西。 “先看见，再命名。” 北岸图书馆 · 二楼阅览室 读一张肖像 / 12 月 12 日",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": "身着美国海军制服的格蕾丝·霍珀肖像"
+          }
+        ]
+      },
+      "mobile": {
+        "pageWidth": 390,
+        "pageHeight": 1763,
+        "documentText": "北岸图书馆 本期活动 01 · 眼镜 02 · 帽徽 03 · 勋表 照片：美国海军 · James S. Davis 12·12 馆藏活动 / PORTRAIT READING 读一张 肖像 本期人物：Grace Hopper / 格蕾丝·霍珀 暂缓辨认姓名。先把目光停在她的眼镜、帽徽与胸前勋表；它们各自留下了一段怎样的工作与时间？ 日期 12 月 12 日 地点 北岸图书馆 · 二楼阅览室 入场 自由入场 带着问题来，也可以只带着好奇心来。 HOW TO LOOK 让一张脸先于一个名字开口。 人物肖像不只记录容貌。衣饰的细节、姿态的方向、被镜头留下的微小证据，都在等候一次缓慢的阅读。 观察之后，再认识她。 在阅览室里，我们从照片的局部开始，一起练习看见照片没有写出的东西。 “先看见，再命名。” 北岸图书馆 · 二楼阅览室 读一张肖像 / 12 月 12 日",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": "身着美国海军制服的格蕾丝·霍珀肖像"
+          }
+        ]
+      },
+      "poster": {
+        "pageWidth": 800,
+        "pageHeight": 1000,
+        "documentText": "北岸图书馆 12·12 读一张 肖像 Grace Hopper / 格蕾丝·霍珀 北岸图书馆 · 二楼阅览室 自由入场 先观察眼镜、帽徽、胸前勋表 12 月 12 日 照片：美国海军 · James S. Davis",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": ""
+          }
+        ]
+      },
+      "errors": []
+    },
+    "B": {
+      "desktop": {
+        "pageWidth": 1280,
+        "pageHeight": 1069,
+        "documentText": "北岸图书馆 馆藏活动 · 第 04 期 馆藏活动 / PORTRAIT READING 读一张 肖像 先别急着读名字。停下来，看一看她的眼镜、帽徽，和胸前一排小小的勋表。 日期 12 月 12 日 地点 北岸图书馆 · 二楼阅览室 入场 自由入场 从三个细节开始读 肖像 · 01 观察之后，读她的名字 Grace Hopper 照片：美国海军 · James S. Davis 肖像不是答案的封面。它保存着姿态、选择与时间留下的线索；在阅览室里，我们从一张照片开始，练习缓慢地看。 无需预约。欢迎带着一个你注意到的细节前来。",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": "身着深色海军制服、戴有帽徽并佩戴眼镜与勋表的格蕾丝·霍珀肖像"
+          }
+        ]
+      },
+      "mobile": {
+        "pageWidth": 390,
+        "pageHeight": 1401,
+        "documentText": "北岸图书馆 馆藏活动 · 第 04 期 馆藏活动 / PORTRAIT READING 读一张 肖像 先别急着读名字。停下来，看一看她的眼镜、帽徽，和胸前一排小小的勋表。 日期 12 月 12 日 地点 北岸图书馆 · 二楼阅览室 入场 自由入场 从三个细节开始读 肖像 · 01 观察之后，读她的名字 Grace Hopper 照片：美国海军 · James S. Davis 肖像不是答案的封面。它保存着姿态、选择与时间留下的线索；在阅览室里，我们从一张照片开始，练习缓慢地看。 无需预约。欢迎带着一个你注意到的细节前来。",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": "身着深色海军制服、戴有帽徽并佩戴眼镜与勋表的格蕾丝·霍珀肖像"
+          }
+        ]
+      },
+      "poster": {
+        "pageWidth": 800,
+        "pageHeight": 1000,
+        "documentText": "北岸图书馆 馆藏活动 · 第 04 期 读一张 肖像 12 月 12 日 先看眼镜、帽徽和胸前勋表。让细节带你，走到一个名字之前。 本期人物 格蕾丝·霍珀 Grace Hopper 照片：美国海军 James S. Davis 北岸图书馆 · 二楼阅览室 自由入场",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": ""
+          }
+        ]
+      },
+      "errors": []
+    },
+    "C": {
+      "desktop": {
+        "pageWidth": 1280,
+        "pageHeight": 800,
+        "documentText": "北岸图书馆 馆藏活动 读一张 肖像 沿着镜框往上找帽徽，再向下找制服上的彩色勋表。 日期 12 月 12 日 地点 北岸图书馆 · 二楼阅览室 入场 自由入场 美国海军摄影 · James S. Davis 对照原图 眼镜 金色镜框折向镜腿。 帽徽 深色帽冠托着金色徽章。 勋表 在她的左胸，画面的右侧。 揭晓人物姓名",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": "一位海军军官戴着军帽和金色镜框，深色制服左胸佩有多色勋表。"
+          }
+        ]
+      },
+      "mobile": {
+        "pageWidth": 390,
+        "pageHeight": 844,
+        "documentText": "北岸图书馆 馆藏活动 读一张肖像 沿着镜框往上找帽徽，再向下找制服上的彩色勋表。 日期 12 月 12 日 地点 北岸图书馆 · 二楼阅览室 入场 自由入场 美国海军摄影 · James S. Davis 对照原图 眼镜 帽徽 勋表 揭晓人物姓名",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": "一位海军军官戴着军帽和金色镜框，深色制服左胸佩有多色勋表。"
+          }
+        ]
+      },
+      "poster": {
+        "pageWidth": 800,
+        "pageHeight": 1000,
+        "documentText": "北岸图书馆 馆藏活动 读一张 肖像 12 月 12 日 美国海军摄影 · James S. Davis 眼镜 帽徽 勋表 格蕾丝·霍珀 Grace Hopper 北岸图书馆 · 二楼阅览室 自由入场",
+        "photos": [
+          {
+            "loaded": true,
+            "alt": "戴着眼镜、帽徽和勋表的海军军官"
+          }
+        ]
+      },
+      "reveal": "Name hidden initially, revealed with Enter and hidden again with Space",
+      "phone": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "firstScreen": {
+          "facts": {
+            "top": 179.59375,
+            "bottom": 207.4375
+          },
+          "portrait": {
+            "top": 225.4375,
+            "bottom": 496.15625
+          },
+          "eye": {
+            "top": 225.4375,
+            "bottom": 286.734375
+          },
+          "cap": {
+            "top": 313.328125,
+            "bottom": 374.625
+          },
+          "ribbons": {
+            "top": 401.21875,
+            "bottom": 462.515625
+          },
+          "reveal": {
+            "top": 535.65625,
+            "bottom": 579.65625
+          }
+        },
+        "tapToRevealAndHide": true
+      },
+      "errors": []
+    }
+  }
+}

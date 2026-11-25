@@ -1,0 +1,2 @@
+page { background: #f6f0e4; color: #1f2827; font-family: sans-serif; }
+button { border-radius: 0; }

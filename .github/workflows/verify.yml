@@ -23,3 +23,59 @@ jobs:
         run: node skills/yuan-ui-design/scripts/validate-ui-evidence.mjs --self-test
       - name: Run artifact manifest self-test
         run: node skills/yuan-ui-design/scripts/ui-artifacts.mjs --self-test
+      - name: Test image imports and source records
+        run: |
+          python3 -m venv "$RUNNER_TEMP/yuan-image-checks"
+          "$RUNNER_TEMP/yuan-image-checks/bin/pip" install "Pillow>=11.3,<14" "python-pptx==1.0.2"
+          "$RUNNER_TEMP/yuan-image-checks/bin/python" -B skills/yuan-ui-design/scripts/test_image_provenance.py
+          "$RUNNER_TEMP/yuan-image-checks/bin/python" -B skills/yuan-ui-design/scripts/test_unslop_review.py
+          "$RUNNER_TEMP/yuan-image-checks/bin/python" -B examples/silent-programme/test_render_composition.py
+      - name: Install browser for interaction checks
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx --no-install playwright install --with-deps chromium
+      - name: Exercise historical data and delayed saves
+        run: npm run test:editor
+      - name: Exercise named repair states, retry and reload
+        run: npm run test:repair-states
+      - name: Capture and verify an editable offline URL baseline
+        run: npm run test:url-baseline
+      - name: Exercise photo inspection on desktop and mobile layouts
+        run: npm run test:photo
+      - name: Verify portrait comparison and return desk interactions
+        run: |
+          node benchmarks/portrait-composition/capture.cjs "$RUNNER_TEMP/portrait"
+          node benchmarks/portrait-composition/build-comparison.mjs "$RUNNER_TEMP/portrait" "$RUNNER_TEMP/portrait-comparison.html"
+          node benchmarks/return-desk-polish/check.cjs "$RUNNER_TEMP/return-desk"
+      - name: Verify tide reading review and local write recovery
+        run: node benchmarks/tide-reading/check.cjs "$RUNNER_TEMP/tide-reading"
+      - name: Verify editable slides and rendered programme assets
+        run: python3 examples/silent-programme/check.py
+      - name: Check protected picture regions across three layouts
+        run: npm run test:programme-composition
+      - name: Verify mini-program content and storage contract
+        run: |
+          python3 examples/silent-programme/wechat/scripts/sync_programme.py --check
+          node examples/silent-programme/wechat/scripts/test_storage.js
+      - name: Verify exhibit repair against its original storage contract
+        run: npm run test:transfer
+      - name: Verify 3D compatibility rules and fallback
+        run: npm run test:3d
+
+  native-inspection:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: examples/native-inspection
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Test local draft and attachment recovery
+        run: swift test
+      - name: Build the iOS app for the simulator SDK
+        run: |
+          xcodebuild -project NativeInspection.xcodeproj -scheme NativeInspection \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/inspection-ios" \
+            CODE_SIGNING_ALLOWED=NO build

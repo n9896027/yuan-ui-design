@@ -1,0 +1,34 @@
+{
+  "asset": {
+    "bytes": 71018,
+    "dimensions": {
+      "height": 405,
+      "width": 489
+    },
+    "path": "train.jpg",
+    "sha256": "51ef6430cd94e6f4c4c88ebb3559e41d6d1bb5ac05a660bec00e13ebfd6a1895"
+  },
+  "focal_or_crop_intent": "保留人物和原始取景，不将主体截断",
+  "generation_method": "downloaded original from Wikimedia Commons (not AI-generated)",
+  "mode": "wikimedia_commons_download",
+  "recorded_at": "2026-11-24T07:56:31.846459+00:00",
+  "review_note": "Hash and metadata establish traceability, not ownership or suitability. Re-check the source page before publication.",
+  "schema_version": "1.0",
+  "source": {
+    "author": "Edwin Stanton Porter",
+    "credit": "The Kobal Collection",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Great_train_robbery_still.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "file_page": "https://commons.wikimedia.org/wiki/File%3AGreat_train_robbery_still.jpg",
+    "height": 405,
+    "kind": "wikimedia_commons",
+    "license": "Public domain",
+    "license_url": null,
+    "mime": "image/jpeg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Great_train_robbery_still.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "requested_width": null,
+    "retrieval_kind": "original",
+    "title": "File:Great train robbery still.jpg",
+    "width": 489
+  },
+  "subject": "《火车大劫案》影片剧照"
+}

@@ -1,0 +1,34 @@
+{
+  "asset": {
+    "bytes": 23882,
+    "dimensions": {
+      "height": 264,
+      "width": 257
+    },
+    "path": "moon.jpg",
+    "sha256": "a8f932b1197c45aa9ce7f76b2dc7f0b9361e44394068bba91253bb178ecc9e10"
+  },
+  "focal_or_crop_intent": "保持原始近方形取景，月面与飞行器在同一画幅内",
+  "generation_method": "downloaded original from Wikimedia Commons (not AI-generated)",
+  "mode": "wikimedia_commons_download",
+  "recorded_at": "2026-11-24T07:59:23.753053+00:00",
+  "review_note": "Hash and metadata establish traceability, not ownership or suitability. Re-check the source page before publication.",
+  "schema_version": "1.0",
+  "source": {
+    "author": "Georges Méliès",
+    "credit": "Roger-Viollet",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Le_Voyage_dans_la_lune.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "file_page": "https://commons.wikimedia.org/wiki/File%3ALe_Voyage_dans_la_lune.jpg",
+    "height": 264,
+    "kind": "wikimedia_commons",
+    "license": "Public domain",
+    "license_url": null,
+    "mime": "image/jpeg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Le_Voyage_dans_la_lune.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "requested_width": null,
+    "retrieval_kind": "original",
+    "title": "File:Le Voyage dans la lune.jpg",
+    "width": 257
+  },
+  "subject": "月球旅行记的月面剧照"
+}
